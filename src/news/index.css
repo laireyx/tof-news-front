@@ -10,7 +10,7 @@
   border-radius: 8px;
   background-color: #eeeeeedd;
   padding: 1em;
-  width: calc(50% - 2em - 8px);
+  flex-basis: calc(50% - 2em - 8px);
 
   display: flex;
   flex-direction: column;
@@ -50,7 +50,7 @@
 }
 
 @media (max-width: 800px) {
-  .NewsArticle {
-    max-width: inherit;
+  .NewsArticleBox {
+    flex: 1 1 content;
   }
 }

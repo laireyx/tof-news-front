@@ -1,0 +1,23 @@
+{
+  "name": "ToF News",
+  "short_name": "ToF News",
+  "description": "Tower of Fantasy News",
+  "background_color": "white",
+  "theme_color": "white",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/index.html",
+  "display": "fullscreen"
+}

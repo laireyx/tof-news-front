@@ -9,7 +9,7 @@ function useNews(p: number = 0) {
   useEffect(() => {
     const controller = new AbortController();
 
-    fetch(`//api.tof.news/news/list?p=${p}`, {
+    fetch(`https://api.tof.news/news/list?p=${p}`, {
       signal: controller.signal,
     })
       .then((resp) => resp.json())

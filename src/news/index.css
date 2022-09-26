@@ -23,9 +23,13 @@
   justify-content: space-evenly;
 }
 
-.ArticlePhoto:not(.fullscreen *),
-.ArticlePhoto > img:not(.fullscreen *) {
-  max-height: 15em !important;
+.ArticlePhoto {
+  max-width: 100%;
+  max-height: 15em;
+  object-fit: contain;
+}
+.fullscreen .ArticlePhoto {
+  max-height: calc(100vh - 80px);
 }
 .ArticleContent {
   text-indent: 1em;

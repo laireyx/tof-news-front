@@ -15,7 +15,13 @@ function NewsArticle({ news }: { news: News }) {
           <ImageGallery
             items={news.media.map((media) => ({
               original: media.url ?? media.previewUrl ?? "",
-              originalClass: "ArticlePhoto",
+              renderItem: ({ original }) => (
+                <img
+                  src={original}
+                  className="ArticlePhoto"
+                  referrerPolicy="no-referrer"
+                />
+              ),
             }))}
             {...{
               showThumbnails: false,

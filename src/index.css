@@ -19,7 +19,6 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-blend-mode: difference;
 
   margin: 0;
   height: 100vh;

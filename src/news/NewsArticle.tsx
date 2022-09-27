@@ -7,6 +7,47 @@ function sanitizeHtml(html: string) {
   return htmlDoc.body.textContent;
 }
 
+function dateInfo(timestamp: string | Date): string {
+  const date = new Date(timestamp);
+  const timeDiff = (Date.now() - date.getTime()) / 1000;
+  const formatter = new Intl.DateTimeFormat("ko-KR", {
+    timeZone: "Asia/Seoul",
+    dateStyle: "full",
+    timeStyle: "short",
+    hour12: false,
+  });
+
+  if (timeDiff > 86400) {
+    return formatter.format(date);
+  }
+  if (timeDiff < 60) {
+    return `${timeDiff}초 전`;
+  }
+  if (timeDiff < 3600) {
+    return `${~~(timeDiff / 60)}분 전`;
+  }
+  return `${~~(timeDiff / 3600)}시간 전`;
+}
+
+function ArticleMeta({ news }: { news: News }) {
+  return (
+    <div className="ArticleMeta">
+      <div>
+        <span className="ArticleAuthor">{news.author ?? "?Unknown"}</span>
+        <br />
+        <time dateTime={news.timestamp}>{dateInfo(news.timestamp)}</time>
+      </div>
+      <div>
+        {news.authorImg ? (
+          <img className="ArticleAuthorProfile" src={news.authorImg} />
+        ) : (
+          <></>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function NewsArticle({ news }: { news: News }) {
   return (
     <div className="NewsArticleBox">
@@ -38,22 +79,7 @@ function NewsArticle({ news }: { news: News }) {
           <a href={news.url}>{sanitizeHtml(news.content)}</a>
         </p>
       </div>
-      <div className="ArticleMeta">
-        <div>
-          <span className="ArticleAuthor">{news.author ?? "?Unknown"}</span>
-          <br />
-          <time dateTime={news.timestamp}>
-            {new Date(news.timestamp).toString()}
-          </time>
-        </div>
-        <div>
-          {news.authorImg ? (
-            <img className="ArticleAuthorProfile" src={news.authorImg} />
-          ) : (
-            <></>
-          )}
-        </div>
-      </div>
+      <ArticleMeta news={news} />
     </div>
   );
 }

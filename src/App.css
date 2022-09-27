@@ -3,15 +3,23 @@
   max-height: 100vh;
 
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
 }
 
 .App {
-  max-height: calc(100vh - 4rem);
+  padding: 2rem;
+
+  max-height: 100vh;
+
+  background: #000000aa;
   overflow: auto;
   scrollbar-width: none;
 }
 
 .App::-webkit-scrollbar {
   display: none;
+}
+
+h1.title {
+  color: white;
 }

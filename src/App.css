@@ -1,6 +1,6 @@
 #root {
-  max-width: 1280px;
-  max-height: 100vh;
+  width: min(100vw, 1280px);
+  height: 100vh;
 
   margin: 0 auto;
   padding: 0;
@@ -9,11 +9,14 @@
 .App {
   padding: 2rem;
 
-  max-height: 100vh;
+  height: calc(100vh - 4rem);
 
   background: #000000aa;
   overflow: auto;
   scrollbar-width: none;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .App::-webkit-scrollbar {

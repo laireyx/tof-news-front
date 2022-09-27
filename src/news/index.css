@@ -1,8 +1,12 @@
 @import "react-image-gallery/styles/css/image-gallery.css";
 
 .News {
+  flex-grow: 1;
+
   display: flex;
   flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: center;
   gap: 1em;
 }
 

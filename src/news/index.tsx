@@ -2,10 +2,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import ReactLoading from "react-loading";
 
 import "./index.css";
-import { NewsList } from "./NewsType";
-import NewsArticle from "./NewsArticle";
+import Article from "./Article";
 import useRadio from "../common/radio";
 import styled from "styled-components";
+import { useNews } from "./utils";
 
 const LoadingWrapper = styled.div`
   flex-basis: 100%;
@@ -14,33 +14,6 @@ const LoadingWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
-function useNews({ source, page }: { source?: string; page: number }) {
-  const [pullable, setPullable] = useState(true);
-  const [newsList, setNewsList] = useState<NewsList>([]);
-
-  useEffect(() => {
-    setNewsList([]);
-  }, [source]);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    setPullable(false);
-    fetch(`https://api.tof.news/news/list?p=${page}&source=${source}`, {
-      signal: controller.signal,
-    })
-      .then((resp) => resp.json())
-      .then((json) => {
-        setNewsList((currentList) => currentList.concat(json as NewsList));
-        setPullable(json.length > 0);
-      });
-
-    return () => controller.abort();
-  }, [page, source]);
-
-  return { newsList, pullable };
-}
 
 function News() {
   const [page, setPage] = useState(0);
@@ -60,13 +33,13 @@ function News() {
 
   const checkScroll = useCallback<IntersectionObserverCallback>(
     ([entry], observer) => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && pullable) {
         observer.unobserve(entry.target);
-        setPage((currentPage) => currentPage + 1);
+        setPage(page + 1);
         observer.observe(entry.target);
       }
     },
-    []
+    [page]
   );
 
   useEffect(() => {
@@ -84,7 +57,7 @@ function News() {
       {Radio}
       <div className="News">
         {newsList.map((news) => (
-          <NewsArticle key={news.timestamp.toString()} news={news} />
+          <Article key={news.url} news={news} />
         ))}
         <LoadingWrapper ref={loadingRef}>
           <ReactLoading type="bubbles" />

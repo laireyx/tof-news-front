@@ -14,6 +14,4 @@ type News = {
   media: NewsMedia[];
 };
 
-type NewsList = News[];
-
-export type { News, NewsMedia, NewsList };
+export type { News, NewsMedia };

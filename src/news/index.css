@@ -10,16 +10,6 @@
   gap: 1em;
 }
 
-.NewsArticleBox {
-  border-radius: 8px;
-  background-color: #eeeeeedd;
-  padding: 1em;
-  flex-basis: calc(50% - 2em - 8px);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 .NewsArticle {
   flex: 1;
   display: flex;
@@ -27,30 +17,8 @@
   justify-content: space-evenly;
 }
 
-.ArticlePhoto {
-  max-width: 100%;
-  max-height: 15em;
-  object-fit: contain;
-}
-.fullscreen .ArticlePhoto {
-  max-height: calc(100vh - 80px);
-}
 .ArticleContent {
   text-indent: 1em;
-}
-
-.ArticleMeta {
-  margin-bottom: 0;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  gap: 1em;
-
-  text-align: end;
-}
-.ArticleAuthor {
-  font-weight: bold;
 }
 
 @media (max-width: 800px) {

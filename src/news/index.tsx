@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import BeatLoader from "react-spinners/BeatLoader";
+import ReactLoading from "react-loading";
 
 import Article from "./Article";
 import useRadio from "../common/radio";
@@ -68,7 +68,7 @@ function TofNews() {
           <Article key={news.url} news={news} />
         ))}
         <LoadingWrapper ref={loadingRef}>
-          <BeatLoader color="white" />
+          <ReactLoading type="bubbles" />
         </LoadingWrapper>
       </News>
     </>

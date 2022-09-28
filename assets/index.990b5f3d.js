@@ -103,7 +103,7 @@ Error generating stack: `+l.message+`
   @media (max-width: 768px) {
     flex: 1 1 content;
   }
-`;function hg({news:e}){return Hn(pg,{children:[We(dg,{news:e}),We(og,{news:e})]})}const mg=Mt.span`
+`;function hg({news:e}){return Hn(pg,{lang:e.lang,children:[We(dg,{news:e}),We(og,{news:e})]})}const mg=Mt.span`
   border-radius: 3em;
 
   padding: 0.5em 1em;

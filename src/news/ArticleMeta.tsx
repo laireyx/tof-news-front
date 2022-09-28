@@ -17,6 +17,10 @@ const ArticleAuthor = styled.span`
   font-weight: bold;
 `;
 
+const AuthorProfile = styled.img`
+  object-fit: contain;
+`;
+
 function ArticleMeta({ news }: { news: News }) {
   return (
     <MetaDiv>
@@ -27,9 +31,7 @@ function ArticleMeta({ news }: { news: News }) {
           {dateInfo(news.timestamp)}
         </time>
       </div>
-      {news.authorImg && (
-        <img className="ArticleAuthorProfile" src={news.authorImg} />
-      )}
+      {news.authorImg && <AuthorProfile src={news.authorImg} />}
     </MetaDiv>
   );
 }

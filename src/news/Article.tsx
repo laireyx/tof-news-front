@@ -22,7 +22,7 @@ const ArticleBox = styled.div`
 
 function Article({ news }: { news: News }) {
   return (
-    <ArticleBox>
+    <ArticleBox lang={news.lang}>
       <ArticleContent news={news} />
       <ArticleMeta news={news} />
     </ArticleBox>

@@ -23,7 +23,9 @@ function ArticleMeta({ news }: { news: News }) {
       <div>
         <ArticleAuthor>{news.author ?? "?Unknown"}</ArticleAuthor>
         <br />
-        <time dateTime={news.timestamp}>{dateInfo(news.timestamp)}</time>
+        <time dateTime={news.timestamp.toString()}>
+          {dateInfo(news.timestamp)}
+        </time>
       </div>
       {news.authorImg && (
         <img className="ArticleAuthorProfile" src={news.authorImg} />

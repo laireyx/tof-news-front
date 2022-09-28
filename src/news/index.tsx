@@ -1,12 +1,20 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import ReactLoading from "react-loading";
 
-import "./index.css";
 import Article from "./Article";
 import useRadio from "../common/radio";
 import styled from "styled-components";
 import { useNews } from "./utils";
 
+const News = styled.div`
+  flex-grow: 1;
+
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 1em;
+`;
 const LoadingWrapper = styled.div`
   flex-basis: 100%;
 
@@ -15,7 +23,7 @@ const LoadingWrapper = styled.div`
   align-items: center;
 `;
 
-function News() {
+function TofNews() {
   const [page, setPage] = useState(0);
   const { Radio, value: source } = useRadio([
     { show: "All", value: "" },
@@ -55,16 +63,16 @@ function News() {
   return (
     <>
       {Radio}
-      <div className="News">
+      <News>
         {newsList.map((news) => (
           <Article key={news.url} news={news} />
         ))}
         <LoadingWrapper ref={loadingRef}>
           <ReactLoading type="bubbles" />
         </LoadingWrapper>
-      </div>
+      </News>
     </>
   );
 }
 
-export default News;
+export default TofNews;

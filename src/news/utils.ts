@@ -29,7 +29,7 @@ function dateInfo(timestamp: string | Date): string {
 }
 
 function useNews({ source, page }: { source?: string; page: number }) {
-  const [pullable, setPullable] = useState(true);
+  const [pullable, setPullable] = useState(false);
   const [newsList, setNewsList] = useState<News[]>([]);
 
   useEffect(() => {

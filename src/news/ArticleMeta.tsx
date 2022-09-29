@@ -31,7 +31,9 @@ function ArticleMeta({ news }: { news: News }) {
           {dateInfo(news.timestamp)}
         </time>
       </div>
-      {news.authorImg && <AuthorProfile src={news.authorImg} />}
+      {news.authorImg && (
+        <AuthorProfile alt="User Profile" src={news.authorImg} />
+      )}
     </MetaDiv>
   );
 }

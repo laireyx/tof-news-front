@@ -14,8 +14,7 @@
 }
 
 body {
-  background-image: url("./assets/nemesis2.jpg");
-  /* background-color: #222565; */
+  background-image: url("./assets/nemesis2.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

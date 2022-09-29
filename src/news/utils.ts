@@ -20,7 +20,7 @@ function dateInfo(timestamp: string | Date): string {
     return formatter.format(date);
   }
   if (timeDiff < 60) {
-    return `${timeDiff}초 전`;
+    return `${~~timeDiff}초 전`;
   }
   if (timeDiff < 3600) {
     return `${~~(timeDiff / 60)}분 전`;

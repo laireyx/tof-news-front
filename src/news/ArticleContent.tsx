@@ -15,7 +15,7 @@ const ContentWrapper = styled.div`
 const ArticlePhoto = styled.div`
   & img {
     max-width: 100%;
-    max-height: 15em;
+    height: 15em;
     object-fit: contain;
   }
   .fullscreen & img {
@@ -24,7 +24,7 @@ const ArticlePhoto = styled.div`
 `;
 const ArticleVideo = styled.video`
   max-width: 100%;
-  max-height: 15em;
+  height: 15em;
   object-fit: contain;
 `;
 

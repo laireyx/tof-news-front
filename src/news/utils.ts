@@ -52,7 +52,10 @@ function useNews({ source, page }: { source?: string; page: number }) {
         console.error(err);
       });
 
-    return () => controller.abort();
+    return () => {
+      setPullable(true);
+      controller.abort();
+    };
   }, [page, source]);
 
   return { newsList, pullable };

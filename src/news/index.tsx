@@ -47,7 +47,7 @@ function TofNews() {
         observer.observe(entry.target);
       }
     },
-    [page]
+    [page, pullable]
   );
 
   useEffect(() => {

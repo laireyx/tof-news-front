@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { News } from "./types";
-import { dateInfo } from "./utils";
+import { dateInfo } from "../common/utils";
 
 const MetaDiv = styled.div`
   margin-bottom: 0;

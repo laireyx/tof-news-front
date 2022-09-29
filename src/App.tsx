@@ -1,4 +1,3 @@
-import "./App.css";
 import TofNews from "./news";
 import { HashRouter, Link, Route, Routes, useLocation } from "react-router-dom";
 import styled from "styled-components";
@@ -6,11 +5,56 @@ import newsIcon from "./assets/news.svg";
 import dailyIcon from "./assets/daily.svg";
 import DailyRoutine from "./daily";
 
+const AppDiv = styled.div`
+  padding: 2rem;
+
+  height: calc(100vh - 4rem);
+
+  background: #000000aa;
+  overflow: auto;
+  scrollbar-width: none;
+
+  display: flex;
+  flex-direction: column;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
 const NavigationBar = styled.div`
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  padding: 1em;
+
+  box-sizing: border-box;
+
+  height: 100vh;
+  background: #000000aa;
+
   color: white;
   display: flex;
-  justify-content: flex-end;
-  gap: 1em;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2em;
+
+  z-index: 999;
+
+  @media (max-width: 1280px) {
+    top: unset;
+    bottom: 0;
+
+    height: unset;
+    width: 100vw;
+    flex-direction: row;
+  }
+`;
+
+const FooterDiv = styled.div`
+  line-height: 128px;
 `;
 
 const LinkIcon = styled.img<{ active: boolean }>`
@@ -23,7 +67,6 @@ const LinkIcon = styled.img<{ active: boolean }>`
 
 function Navigation() {
   const loc = useLocation();
-  console.log(loc);
   return (
     <NavigationBar>
       <Link to="/">
@@ -42,7 +85,7 @@ function Navigation() {
 
 function App() {
   return (
-    <div className="App">
+    <AppDiv>
       <h1 className="title">Tower of Fantasy News</h1>
       <HashRouter>
         <Navigation />
@@ -51,7 +94,8 @@ function App() {
           <Route path="/daily" element={<DailyRoutine />} />
         </Routes>
       </HashRouter>
-    </div>
+      <FooterDiv>&nbsp;</FooterDiv>
+    </AppDiv>
   );
 }
 

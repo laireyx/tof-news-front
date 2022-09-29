@@ -47,6 +47,9 @@ function useNews({ source, page }: { source?: string; page: number }) {
       .then((json) => {
         setNewsList((currentList) => currentList.concat(json as News[]));
         setPullable(json.length > 0);
+      })
+      .catch((err) => {
+        console.error(err);
       });
 
     return () => controller.abort();

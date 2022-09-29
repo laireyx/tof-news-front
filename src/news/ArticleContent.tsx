@@ -3,6 +3,7 @@ import ImageGallery, { ReactImageGalleryItem } from "react-image-gallery";
 import { useCallback, useMemo } from "react";
 import type { ImageMedia, News, VideoMedia } from "./types";
 import { sanitizeHtml } from "./utils";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const ContentWrapper = styled.div`
   flex: 1;
@@ -11,11 +12,13 @@ const ContentWrapper = styled.div`
   justify-content: space-evenly;
 `;
 
-const ArticlePhoto = styled.img`
-  max-width: 100%;
-  max-height: 15em;
-  object-fit: contain;
-  .fullscreen & {
+const ArticlePhoto = styled.div`
+  & img {
+    max-width: 100%;
+    max-height: 15em;
+    object-fit: contain;
+  }
+  .fullscreen & img {
     max-height: calc(100vh - 80px);
   }
 `;
@@ -47,11 +50,14 @@ function ArticleContent({ news }: { news: News }) {
 
   const renderItem = useCallback(
     ({ original }: ReactImageGalleryItem) => (
-      <ArticlePhoto
-        key={original}
-        src={original}
-        referrerPolicy="no-referrer"
-      />
+      <ArticlePhoto key={original}>
+        <LazyLoadImage
+          alt=""
+          src={original}
+          referrerPolicy="no-referrer"
+          effect="blur"
+        />
+      </ArticlePhoto>
     ),
     []
   );

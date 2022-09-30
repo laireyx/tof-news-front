@@ -32,6 +32,7 @@ const OptionButton = styled.span<{ active: boolean }>`
 
 const OptionWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5em;
   padding: 0.5em;
 `;

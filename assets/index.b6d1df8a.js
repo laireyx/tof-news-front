@@ -88,6 +88,7 @@
   }
 `,Qs=dt.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5em;
   padding: 0.5em;
 `;function Zs(e){var r;const[t,n]=Mt((r=e[0])==null?void 0:r.value);return{Radio:Se(Qs,{children:e.map(o=>Se(Js,{active:t===o.value,onClick:()=>n(o.value),children:o.show},o.value))}),value:t}}const el=dt.div`

@@ -29,6 +29,7 @@ function TofNews() {
     { show: "All", value: "" },
     { show: "Twitter[EN/JP]", value: "Twitter" },
     { show: "Weibo[CN]", value: "Weibo" },
+    { show: "Unofficial", value: "Unofficial@Twitter" },
   ]);
 
   useEffect(() => {

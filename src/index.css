@@ -4,6 +4,8 @@
   line-height: 24px;
   font-weight: 400;
 
+  height: 100%;
+
   color-scheme: light;
 
   font-synthesis: none;
@@ -20,7 +22,7 @@ body {
   background-attachment: fixed;
 
   margin: 0;
-  height: 100vh;
+  height: 100%;
 
   display: flex;
   place-items: center;
@@ -37,10 +39,12 @@ a:hover {
 
 #root {
   width: min(100vw, 1280px);
-  height: 100vh;
+  height: 100%;
 
   margin: 0 auto;
   padding: 0;
+
+  display: flex;
 }
 
 h1.title {

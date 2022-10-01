@@ -8,7 +8,7 @@ import DailyRoutine from "./daily";
 const AppDiv = styled.div`
   padding: 2rem;
 
-  height: calc(100vh - 4rem);
+  flex: 1;
 
   background: #000000aa;
   overflow: auto;
@@ -27,12 +27,12 @@ const NavigationBar = styled.div`
 
   left: 0;
   top: 0;
+  bottom: 0;
 
   padding: 1em;
 
   box-sizing: border-box;
 
-  height: 100vh;
   background: #000000aa;
 
   color: white;

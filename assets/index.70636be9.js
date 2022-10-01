@@ -182,7 +182,7 @@
 `;function pu(){const{routineState:e,update:t,reset:n}=au();return console.log(e),Se(hu,{children:e.map((r,o)=>Se(du,{...r,update:()=>t(o),reset:()=>n(o)},r.name))})}const mu=dt.div`
   padding: 2rem;
 
-  height: calc(100vh - 4rem);
+  flex: 1;
 
   background: #000000aa;
   overflow: auto;
@@ -199,12 +199,12 @@
 
   left: 0;
   top: 0;
+  bottom: 0;
 
   padding: 1em;
 
   box-sizing: border-box;
 
-  height: 100vh;
   background: #000000aa;
 
   color: white;

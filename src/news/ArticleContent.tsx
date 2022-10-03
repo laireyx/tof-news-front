@@ -19,6 +19,7 @@ const ArticlePhoto = styled.div`
     object-fit: contain;
   }
   .fullscreen & img {
+    height: inherit;
     max-height: calc(100vh - 80px);
   }
 `;

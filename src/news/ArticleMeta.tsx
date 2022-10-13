@@ -19,6 +19,7 @@ const ArticleAuthor = styled.span`
 
 const AuthorProfile = styled.img`
   object-fit: contain;
+  max-width: 48px;
 `;
 
 function ArticleMeta({ news }: { news: News }) {

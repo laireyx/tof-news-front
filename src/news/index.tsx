@@ -28,7 +28,8 @@ function TofNews() {
   const { Radio, value: source } = useRadio([
     { show: "All", value: "" },
     { show: "Twitter[EN/JP]", value: "Twitter" },
-    { show: "Weibo[CN]", value: "Weibo" },
+    { show: "Homepage[EN]", value: "Homepage/EN" },
+    { show: "Homepage[CN]", value: "Homepage/CN" },
     { show: "Unofficial", value: "Unofficial@Twitter" },
   ]);
 

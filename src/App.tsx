@@ -3,7 +3,9 @@ import { HashRouter, Link, Route, Routes, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import newsIcon from "./assets/news.svg";
 import dailyIcon from "./assets/daily.svg";
+import lookupIcon from "./assets/search.svg";
 import DailyRoutine from "./daily";
+import Lookup from "./lookup";
 
 const AppDiv = styled.div`
   padding: 2rem;
@@ -79,6 +81,13 @@ function Navigation() {
           src={dailyIcon}
         />
       </Link>
+      <Link to="/lookup">
+        <LinkIcon
+          active={loc.pathname === "/lookup"}
+          width="48"
+          src={lookupIcon}
+        />
+      </Link>
     </NavigationBar>
   );
 }
@@ -92,6 +101,7 @@ function App() {
         <Routes>
           <Route path="/" element={<TofNews />} />
           <Route path="/daily" element={<DailyRoutine />} />
+          <Route path="/lookup" element={<Lookup />} />
         </Routes>
       </HashRouter>
       <FooterDiv>&nbsp;</FooterDiv>

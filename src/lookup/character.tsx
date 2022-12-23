@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { LookupResponse } from "./types";
+import { EquipmentStat, LookupResponse, WeaponStat } from "./types";
+import { optionText, parsePart } from "./utils";
 
 const CategoryTitle = styled.h1``;
 
@@ -8,26 +9,119 @@ const CharacterSheetDiv = styled.div`
   flex-direction: column;
 `;
 
+const MountIconDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+`;
+
+const MountImage = styled.img`
+  width: 128px;
+  height: 128px;
+`;
+
+function MountIcon({ src, label }: { src: string; label: string }) {
+  return (
+    <MountIconDiv>
+      <MountImage src={src} />
+      {label}
+    </MountIconDiv>
+  );
+}
+
+const WeaponGalleryDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+const WeaponFrameDiv = styled.div`
+  text-align: center;
+`;
+
+function WeaponGallery({ weapons }: { weapons?: WeaponStat[] }) {
+  return (
+    <WeaponGalleryDiv>
+      {weapons?.map(({ name, stars, level }) => (
+        <WeaponFrameDiv>
+          <MountIcon
+            src={`/img_weapon/${name}.webp`}
+            label={`${level}LV / ★${stars}`}
+          />
+        </WeaponFrameDiv>
+      ))}
+    </WeaponGalleryDiv>
+  );
+}
+
+const EquipmentGalleryDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const EquipmentFrame = styled.div``;
+
+const EquipmentOptionInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const OptionIcon = styled.img`
+  width: 24px;
+  height: 24px;
+`;
+
+const OptionValue = styled.span``;
+
+function EquipmentGallery({ equipments }: { equipments?: EquipmentStat[] }) {
+  return (
+    <EquipmentGalleryDiv>
+      {equipments?.map(({ level, options, part, stars }) => (
+        <EquipmentFrame>
+          <MountIcon
+            src={`/img/equip/part/${parsePart(part)}.webp`}
+            label={`+${level} / ★${stars}`}
+          />
+
+          <EquipmentOptionInfo>
+            {options.map(({ element, value, adjust, amount }) => {
+              if (adjust === "Mult")
+                console.log(
+                  adjust,
+                  amount,
+                  (parseFloat(amount ?? "0") * 100)?.toFixed(2)
+                );
+              return (
+                <div>
+                  {value && (
+                    <OptionIcon src={`/img/equip/value/${value}.webp`} />
+                  )}
+                  {["Fire", "Ice", "Phy", "Thunder", "Superpower"].includes(
+                    element ?? ""
+                  ) && (
+                    <OptionIcon src={`/img/equip/element/${element}.webp`} />
+                  )}
+                  +
+                  <OptionValue>
+                    {optionText(adjust ?? "Added", amount ?? "0")}
+                  </OptionValue>
+                </div>
+              );
+            })}
+          </EquipmentOptionInfo>
+        </EquipmentFrame>
+      ))}
+    </EquipmentGalleryDiv>
+  );
+}
+
 function CharacterSheet({ resp }: { resp: LookupResponse }) {
   return (
     <CharacterSheetDiv>
       <CategoryTitle>이름</CategoryTitle>
-      {resp?.data?.name}
+      {resp?.data?.name}({resp?.data?.uid})<br />
       <CategoryTitle>무기</CategoryTitle>
-      {resp.data?.data?.weapons.map(({ level, name, stars }) => (
-        <div>
-          <img src={`/img_weapon/${name}.webp`} />
-          {level}LV / ★{stars}
-        </div>
-      ))}
+      <WeaponGallery weapons={resp?.data?.data.weapons} />
       <CategoryTitle>장비</CategoryTitle>
-      {resp.data?.data?.equipments.map(({ level, options, part, stars }) => (
-        <div>
-          {part} | +{level} / ★{stars}
-          <br />
-          {options.map(({ amount, type }) => `${type} + ${amount}`)}
-        </div>
-      ))}
+      <EquipmentGallery equipments={resp?.data?.data.equipments} />
     </CharacterSheetDiv>
   );
 }

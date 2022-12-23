@@ -6,33 +6,20 @@ type WeaponStat = {
 
 type EquipmentOptionElement =
   | "Common"
+  | "Element"
   | "Phy"
   | "Thunder"
   | "Fire"
   | "Ice"
   | "Superpower";
-type EquipmentOptionVar = "Atk" | "Def" | "MaxHealth" | "Crit";
-type EquipmentOptionMod = "Added" | "Mult";
-
-type EquipmentOptionType =
-  | "CommonAtkAdded"
-  | "PhyAtkAdded"
-  | "ThunderAtkAdded"
-  | "FireAtkAdded"
-  | "IceAtkAdded"
-  | "SuperpowerAtkAdded"
-  | "CommonDefAdded"
-  | "PhyDefAdded"
-  | "ThunderDefAdded"
-  | "FireDefAdded"
-  | "IceDefAdded"
-  | "SuperpowerDefAdded"
-  | "MaxHealthAdded"
-  | "CritAdded";
+type EquipmentOptionValue = "Atk" | "Def" | "MaxHealth" | "Crit";
+type EquipmentOptionAdjust = "Added" | "Mult" | "ExtraUpMult";
 
 type EquipmentOption = {
-  type: string;
-  amount: string;
+  element?: EquipmentOptionElement;
+  value?: EquipmentOptionValue;
+  adjust?: EquipmentOptionAdjust;
+  amount?: string;
 };
 
 type EquipmentStat = {
@@ -58,4 +45,13 @@ type LookupResponse = {
   data?: LookupRecord;
 };
 
-export type { LookupResponse, LookupRecord, EquipmentOption };
+export type {
+  LookupResponse,
+  LookupRecord,
+  EquipmentOption,
+  EquipmentOptionElement,
+  EquipmentOptionValue,
+  EquipmentOptionAdjust,
+  WeaponStat,
+  EquipmentStat,
+};

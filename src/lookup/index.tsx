@@ -24,6 +24,7 @@ const Announcement = styled.h2`
 
 const LookupSearchDiv = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
 `;
 
@@ -55,12 +56,14 @@ const LookupInput = styled.input`
   font-family: ui-monospace monospace Cascadia Consolas;
   font-weight: bold;
   font-size: 1.25em;
-  width: 30ch;
+  width: 15ch;
 `;
 
 const SearchButton = styled.button`
   border: none;
   border-radius: 8px;
+
+  flex-grow: 1;
 
   background-color: black;
   cursor: pointer;
@@ -81,7 +84,7 @@ function Lookup() {
 
   return (
     <LookupDialogDiv>
-      <Announcement>임시로 제공되는 기능입니다.</Announcement>
+      <Announcement>뱅기스 서버 한정 임시로 제공되는 기능입니다.</Announcement>
       <LookupSearchDiv>
         <LookupOptions
           value={option}

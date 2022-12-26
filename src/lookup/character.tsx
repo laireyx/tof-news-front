@@ -82,30 +82,18 @@ function EquipmentGallery({ equipments }: { equipments?: EquipmentStat[] }) {
           />
 
           <EquipmentOptionInfo>
-            {options.map(({ element, value, adjust, amount }) => {
-              if (adjust === "Mult")
-                console.log(
-                  adjust,
-                  amount,
-                  (parseFloat(amount ?? "0") * 100)?.toFixed(2)
-                );
-              return (
-                <div>
-                  {value && (
-                    <OptionIcon src={`/img/equip/value/${value}.webp`} />
-                  )}
-                  {["Fire", "Ice", "Phy", "Thunder", "Superpower"].includes(
-                    element ?? ""
-                  ) && (
-                    <OptionIcon src={`/img/equip/element/${element}.webp`} />
-                  )}
-                  +
-                  <OptionValue>
-                    {optionText(adjust ?? "Added", amount ?? "0")}
-                  </OptionValue>
-                </div>
-              );
-            })}
+            {options.map(({ element, value, adjust, amount }) => (
+              <div>
+                {value && <OptionIcon src={`/img/equip/value/${value}.webp`} />}
+                {["Fire", "Ice", "Phy", "Thunder", "Superpower"].includes(
+                  element ?? ""
+                ) && <OptionIcon src={`/img/equip/element/${element}.webp`} />}
+                +
+                <OptionValue>
+                  {optionText(adjust ?? "Added", amount ?? "0")}
+                </OptionValue>
+              </div>
+            ))}
           </EquipmentOptionInfo>
         </EquipmentFrame>
       ))}

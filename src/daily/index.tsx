@@ -15,8 +15,6 @@ const Routines = styled.div`
 function DailyRoutine() {
   const { routineState, update, reset } = useRoutine();
 
-  console.log(routineState);
-
   return (
     <Routines>
       {routineState.map((routine, idx) => (

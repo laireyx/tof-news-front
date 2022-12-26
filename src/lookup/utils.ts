@@ -3,8 +3,9 @@ import { EquipmentOptionAdjust, LookupResponse } from "./types";
 async function lookup(option: string, uid: string) {
   if (option === "uid" && uid.length !== 17) return Promise.reject();
 
-  const resp = await fetch(`https://api.tof.news/lookup/${option}/${uid}`);
-  return resp.json() as LookupResponse;
+  return (await fetch(`https://api.tof.news/lookup/${option}/${uid}`).then(
+    (resp) => resp.json()
+  )) as LookupResponse;
 }
 
 function parsePart(part: string) {

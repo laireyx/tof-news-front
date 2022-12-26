@@ -4,8 +4,10 @@ import styled from "styled-components";
 import newsIcon from "./assets/news.svg";
 import dailyIcon from "./assets/daily.svg";
 import lookupIcon from "./assets/search.svg";
+import statsIcon from "./assets/stats.svg";
 import DailyRoutine from "./daily";
 import Lookup from "./lookup";
+import Stats from "./stats";
 
 const AppDiv = styled.div`
   padding: 2rem;
@@ -88,6 +90,13 @@ function Navigation() {
           src={lookupIcon}
         />
       </Link>
+      <Link to="/stats">
+        <LinkIcon
+          active={loc.pathname === "/stats"}
+          width="48"
+          src={statsIcon}
+        />
+      </Link>
     </NavigationBar>
   );
 }
@@ -102,6 +111,7 @@ function App() {
           <Route path="/" element={<TofNews />} />
           <Route path="/daily" element={<DailyRoutine />} />
           <Route path="/lookup" element={<Lookup />} />
+          <Route path="/stats" element={<Stats />} />
         </Routes>
       </HashRouter>
       <FooterDiv>&nbsp;</FooterDiv>

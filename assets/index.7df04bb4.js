@@ -283,7 +283,7 @@
   width: 128px;
   height: 128px;
   mix-blend-mode: multiply;
-`;function Vl(){const e=zl();return H(Ul,{children:["Under construction",e.slice(1,11).map(([t,n],r)=>{const o=t.map(i=>H(Hl,{src:`/img_weapon/${i}.webp`}));return H("div",{children:[o," : ",n]},r)})]})}const Gl=ke.div`
+`;function Vl(){const e=zl();return H(Ul,{children:["Under construction",e.slice(0,10).map(([t,n],r)=>{const o=t.map(i=>H(Hl,{src:`/img_weapon/${i}.webp`}));return H("div",{children:[o," : ",n]},r)})]})}const Gl=ke.div`
   padding: 2rem;
 
   flex: 1;

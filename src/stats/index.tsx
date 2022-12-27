@@ -27,7 +27,7 @@ function Stats() {
   return (
     <StatsDiv>
       Under construction
-      {stats.slice(1, 11).map(([weaponNames, count], idx) => {
+      {stats.slice(0, 10).map(([weaponNames, count], idx) => {
         const weapons = weaponNames.map((name) => (
           <WeaponImage src={`/img_weapon/${name}.webp`} />
         ));

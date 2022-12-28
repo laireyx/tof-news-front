@@ -90,7 +90,7 @@ function EquipmentGallery({ equipments }: { equipments?: EquipmentStat[] }) {
                 ) && <OptionIcon src={`/img/equip/element/${element}.webp`} />}
                 +
                 <OptionValue>
-                  {optionText(adjust ?? "Added", amount ?? "0")}
+                  {optionText({ value, adjust, amount })}
                 </OptionValue>
               </div>
             ))}

@@ -1,4 +1,8 @@
-import { EquipmentOptionAdjust, LookupResponse } from "./types";
+import {
+  EquipmentOptionAdjust,
+  EquipmentOptionValue,
+  LookupResponse,
+} from "./types";
 
 async function lookup(option: string, uid: string) {
   if (option === "uid" && uid.length !== 17) return Promise.reject();
@@ -12,12 +16,20 @@ function parsePart(part: string) {
   return part.replace(/\d*_[^_]+$/, "");
 }
 
-function optionText(adjust: EquipmentOptionAdjust, amount: string) {
+function optionText({
+  value,
+  adjust,
+  amount,
+}: {
+  value?: EquipmentOptionValue;
+  adjust?: EquipmentOptionAdjust;
+  amount?: string;
+}) {
+  const isPercent = value === "Crit" || adjust?.endsWith("Mult");
   return (
-    (adjust?.endsWith("Mult")
+    (isPercent
       ? (parseFloat(amount ?? "0") * 100)?.toFixed(2)
-      : parseInt(amount ?? "0").toString()) +
-    (adjust?.endsWith("Mult") ? "%" : "")
+      : parseInt(amount ?? "0").toString()) + (isPercent ? "%" : "")
   );
 }
 

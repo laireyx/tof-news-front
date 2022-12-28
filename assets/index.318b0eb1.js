@@ -181,7 +181,7 @@
   align-items: stretch;
   justify-content: center;
   gap: 1em;
-`;function bl(){const{routineState:e,update:t,reset:n}=fl();return H(gl,{children:e.map((r,o)=>H(yl,{...r,update:()=>t(o),reset:()=>n(o)},r.name))})}async function _l(e,t){return e==="uid"&&t.length!==17?Promise.reject():await fetch(`https://api.tof.news/lookup/${e}/${t}`).then(n=>n.json())}function wl(e){return e.replace(/\d*_[^_]+$/,"")}function Sl(e,t){return(e!=null&&e.endsWith("Mult")?(parseFloat(t!=null?t:"0")*100).toFixed(2):parseInt(t!=null?t:"0").toString())+(e!=null&&e.endsWith("Mult")?"%":"")}const Or=ke.h1``,Ol=ke.div`
+`;function bl(){const{routineState:e,update:t,reset:n}=fl();return H(gl,{children:e.map((r,o)=>H(yl,{...r,update:()=>t(o),reset:()=>n(o)},r.name))})}async function _l(e,t){return e==="uid"&&t.length!==17?Promise.reject():await fetch(`https://api.tof.news/lookup/${e}/${t}`).then(n=>n.json())}function wl(e){return e.replace(/\d*_[^_]+$/,"")}function Sl({value:e,adjust:t,amount:n}){const r=e==="Crit"||(t==null?void 0:t.endsWith("Mult"));return(r?(parseFloat(n!=null?n:"0")*100).toFixed(2):parseInt(n!=null?n:"0").toString())+(r?"%":"")}const Or=ke.h1``,Ol=ke.div`
   display: flex;
   flex-direction: column;
 `,Tl=ke.div`
@@ -206,7 +206,7 @@
 `,Wo=ke.img`
   width: 24px;
   height: 24px;
-`,Dl=ke.span``;function Al({equipments:e}){return H(Il,{children:e==null?void 0:e.map(({level:t,options:n,part:r,stars:o})=>H(kl,{children:[H(oa,{src:`/img/equip/part/${wl(r)}.webp`,label:`+${t} / \u2605${o}`}),H(Rl,{children:n.map(({element:i,value:a,adjust:c,amount:p})=>H("div",{children:[a&&H(Wo,{src:`/img/equip/value/${a}.webp`}),["Fire","Ice","Phy","Thunder","Superpower"].includes(i!=null?i:"")&&H(Wo,{src:`/img/equip/element/${i}.webp`}),"+",H(Dl,{children:Sl(c!=null?c:"Added",p!=null?p:"0")})]}))})]}))})}function Ll({resp:e}){var t,n,r,o;return H(Ol,{children:[H(Or,{children:"\uC774\uB984"}),(t=e==null?void 0:e.data)==null?void 0:t.name,"(",(n=e==null?void 0:e.data)==null?void 0:n.uid,")",H("br",{}),H(Or,{children:"\uBB34\uAE30"}),H(Pl,{weapons:(r=e==null?void 0:e.data)==null?void 0:r.data.weapons}),H(Or,{children:"\uC7A5\uBE44"}),H(Al,{equipments:(o=e==null?void 0:e.data)==null?void 0:o.data.equipments})]})}const Nl=ke.div`
+`,Dl=ke.span``;function Al({equipments:e}){return H(Il,{children:e==null?void 0:e.map(({level:t,options:n,part:r,stars:o})=>H(kl,{children:[H(oa,{src:`/img/equip/part/${wl(r)}.webp`,label:`+${t} / \u2605${o}`}),H(Rl,{children:n.map(({element:i,value:a,adjust:c,amount:p})=>H("div",{children:[a&&H(Wo,{src:`/img/equip/value/${a}.webp`}),["Fire","Ice","Phy","Thunder","Superpower"].includes(i!=null?i:"")&&H(Wo,{src:`/img/equip/element/${i}.webp`}),"+",H(Dl,{children:Sl({value:a,adjust:c,amount:p})})]}))})]}))})}function Ll({resp:e}){var t,n,r,o;return H(Ol,{children:[H(Or,{children:"\uC774\uB984"}),(t=e==null?void 0:e.data)==null?void 0:t.name,"(",(n=e==null?void 0:e.data)==null?void 0:n.uid,")",H("br",{}),H(Or,{children:"\uBB34\uAE30"}),H(Pl,{weapons:(r=e==null?void 0:e.data)==null?void 0:r.data.weapons}),H(Or,{children:"\uC7A5\uBE44"}),H(Al,{equipments:(o=e==null?void 0:e.data)==null?void 0:o.data.equipments})]})}const Nl=ke.div`
   flex-grow: 1;
 
   border-radius: 8px;

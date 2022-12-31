@@ -32,6 +32,12 @@ type EquipmentStat = {
 type LookupRecord = {
   uid: string;
   name: string;
+
+  guildName?: string;
+  inGameUid: string;
+  level: number;
+  battleStrength: number; // aka GS
+
   timestamp: number;
   data: {
     weapons: WeaponStat[];

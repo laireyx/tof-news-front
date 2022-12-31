@@ -104,8 +104,13 @@ function EquipmentGallery({ equipments }: { equipments?: EquipmentStat[] }) {
 function CharacterSheet({ resp }: { resp: LookupResponse }) {
   return (
     <CharacterSheetDiv>
-      <CategoryTitle>이름</CategoryTitle>
-      {resp?.data?.name}({resp?.data?.uid})<br />
+      <CategoryTitle>플레이어 정보</CategoryTitle>
+      Lv.{resp?.data?.level} {resp?.data?.name}
+      <br />
+      Guild [{resp?.data?.guildName}] / GS {resp?.data?.battleStrength}
+      <br />
+      UID {resp?.data?.uid} / {resp?.data?.inGameUid}
+      <br />
       <CategoryTitle>무기</CategoryTitle>
       <WeaponGallery weapons={resp?.data?.data.weapons} />
       <CategoryTitle>장비</CategoryTitle>

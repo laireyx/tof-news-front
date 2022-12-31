@@ -25,7 +25,8 @@ function optionText({
   adjust?: EquipmentOptionAdjust;
   amount?: string;
 }) {
-  const isPercent = value === "Crit" || adjust?.endsWith("Mult");
+  const isPercent =
+    (value === "Crit" && +(amount ?? "0") < 73) || adjust?.endsWith("Mult");
   return (
     (isPercent
       ? (parseFloat(amount ?? "0") * 100)?.toFixed(2)

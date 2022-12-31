@@ -197,7 +197,7 @@
   flex-wrap: wrap;
 `,El=ke.div`
   text-align: center;
-`;function Pl({weapons:e}){return U(xl,{children:e==null?void 0:e.map(({name:t,stars:n,level:r})=>U(El,{children:U(oa,{src:`/img_weapon/${t}.webp`,label:`${r}LV / \u2605${n}`})}))})}const Il=ke.div`
+`;function Pl({weapons:e}){return U(xl,{children:e==null?void 0:e.map(({name:t,stars:n,level:r})=>U(El,{children:U(oa,{src:`/img/weapon/${t}.webp`,label:`${r}LV / \u2605${n}`})}))})}const Il=ke.div`
   display: flex;
   flex-wrap: wrap;
 `,kl=ke.div``,Rl=ke.div`
@@ -283,7 +283,7 @@
   width: 128px;
   height: 128px;
   mix-blend-mode: multiply;
-`;function Vl(){const e=zl();return U(Ul,{children:["Under construction",e.slice(0,10).map(([t,n],r)=>{const o=t.map(i=>U(Hl,{src:`/img_weapon/${i}.webp`}));return U("div",{children:[o," : ",n]},r)})]})}const Gl=ke.div`
+`;function Vl(){const e=zl();return U(Ul,{children:["Under construction",e.slice(0,10).map(([t,n],r)=>{const o=t.map(i=>U(Hl,{src:`/img/weapon/${i}.webp`}));return U("div",{children:[o," : ",n]},r)})]})}const Gl=ke.div`
   padding: 2rem;
 
   flex: 1;

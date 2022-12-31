@@ -29,7 +29,7 @@ function Stats() {
       Under construction
       {stats.slice(0, 10).map(([weaponNames, count], idx) => {
         const weapons = weaponNames.map((name) => (
-          <WeaponImage src={`/img_weapon/${name}.webp`} />
+          <WeaponImage src={`/img/weapon/${name}.webp`} />
         ));
 
         return (

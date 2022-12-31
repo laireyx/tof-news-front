@@ -216,7 +216,7 @@
 
   text-align: left;
   cursor: pointer;
-`;function $l({resp:e}){var n,r,o;const t=`https://api.tof.news/nametag/${(n=e.data)==null?void 0:n.uid}`;return H(Ol,{children:[H(Or,{children:"\uD50C\uB808\uC774\uC5B4 \uC815\uBCF4"}),H(Ll,{src:t}),H(Nl,{onClick:()=>{navigator.clipboard.writeText(t).then(()=>alert("\uB9C1\uD06C\uAC00 \uBCF5\uC0AC\uB418\uC5C8\uC2B5\uB2C8\uB2E4."))},children:"[\uBCF5\uC0AC\uD558\uB824\uBA74 \uD074\uB9AD]"}),H(Or,{children:"\uBB34\uAE30"}),H(Pl,{weapons:(r=e==null?void 0:e.data)==null?void 0:r.data.weapons}),H(Or,{children:"\uC7A5\uBE44"}),H(Al,{equipments:(o=e==null?void 0:e.data)==null?void 0:o.data.equipments})]})}const Bl=Ie.div`
+`;function $l({resp:e}){var n,r,o;const t=`https://api.tof.news/nametag/${(n=e.data)==null?void 0:n.uid}`;return H(Ol,{children:[H(Or,{children:"\uD50C\uB808\uC774\uC5B4 \uC815\uBCF4"}),H(Ll,{src:t}),H(Nl,{onClick:()=>{navigator.clipboard.writeText(`<iframe src="${t}" width="480px" height="320px" style="border: none;"></iframe>`).then(()=>alert("\uB9C1\uD06C\uAC00 \uBCF5\uC0AC\uB418\uC5C8\uC2B5\uB2C8\uB2E4."))},children:"[\uBCF5\uC0AC\uD558\uB824\uBA74 \uD074\uB9AD]"}),H(Or,{children:"\uBB34\uAE30"}),H(Pl,{weapons:(r=e==null?void 0:e.data)==null?void 0:r.data.weapons}),H(Or,{children:"\uC7A5\uBE44"}),H(Al,{equipments:(o=e==null?void 0:e.data)==null?void 0:o.data.equipments})]})}const Bl=Ie.div`
   flex-grow: 1;
 
   border-radius: 8px;

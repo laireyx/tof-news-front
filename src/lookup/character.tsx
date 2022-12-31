@@ -101,16 +101,35 @@ function EquipmentGallery({ equipments }: { equipments?: EquipmentStat[] }) {
   );
 }
 
+const Nametag = styled.iframe`
+  border: none;
+  width: 480px;
+  height: 320px;
+`;
+
+const CopyButton = styled.button`
+  border: none;
+  background: inherit;
+
+  text-align: left;
+  cursor: pointer;
+`;
+
 function CharacterSheet({ resp }: { resp: LookupResponse }) {
+  const nametagUrl = `https://api.tof.news/nametag/${resp.data?.uid}`;
   return (
     <CharacterSheetDiv>
       <CategoryTitle>플레이어 정보</CategoryTitle>
-      Lv.{resp?.data?.level} {resp?.data?.name}
-      <br />
-      Guild [{resp?.data?.guildName}] / GS {resp?.data?.battleStrength}
-      <br />
-      UID {resp?.data?.uid} / {resp?.data?.inGameUid}
-      <br />
+      <Nametag src={nametagUrl} />
+      <CopyButton
+        onClick={() => {
+          navigator.clipboard
+            .writeText(nametagUrl)
+            .then(() => alert("링크가 복사되었습니다."));
+        }}
+      >
+        [복사하려면 클릭]
+      </CopyButton>
       <CategoryTitle>무기</CategoryTitle>
       <WeaponGallery weapons={resp?.data?.data.weapons} />
       <CategoryTitle>장비</CategoryTitle>

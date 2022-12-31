@@ -181,7 +181,7 @@
   align-items: stretch;
   justify-content: center;
   gap: 1em;
-`;function bl(){const{routineState:e,update:t,reset:n}=fl();return H(gl,{children:e.map((r,o)=>H(yl,{...r,update:()=>t(o),reset:()=>n(o)},r.name))})}async function _l(e,t){return e==="uid"&&t.length!==17?Promise.reject():await fetch(`https://api.tof.news/lookup/${e}/${t}`).then(n=>n.json())}function wl(e){return e.replace(/\d*_[^_]+$/,"")}function Sl({value:e,adjust:t,amount:n}){const r=e==="Crit"||(t==null?void 0:t.endsWith("Mult"));return(r?(parseFloat(n!=null?n:"0")*100).toFixed(2):parseInt(n!=null?n:"0").toString())+(r?"%":"")}const Or=ke.h1``,Ol=ke.div`
+`;function bl(){const{routineState:e,update:t,reset:n}=fl();return H(gl,{children:e.map((r,o)=>H(yl,{...r,update:()=>t(o),reset:()=>n(o)},r.name))})}async function _l(e,t){return e==="uid"&&t.length!==17?Promise.reject():await fetch(`https://api.tof.news/lookup/${e}/${t}`).then(n=>n.json())}function wl(e){return e.replace(/\d*_[^_]+$/,"")}function Sl({value:e,adjust:t,amount:n}){const r=e==="Crit"&&+(n!=null?n:"0")<73||(t==null?void 0:t.endsWith("Mult"));return(r?(parseFloat(n!=null?n:"0")*100).toFixed(2):parseInt(n!=null?n:"0").toString())+(r?"%":"")}const Or=ke.h1``,Ol=ke.div`
   display: flex;
   flex-direction: column;
 `,Tl=ke.div`

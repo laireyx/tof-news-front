@@ -124,7 +124,9 @@ function CharacterSheet({ resp }: { resp: LookupResponse }) {
       <CopyButton
         onClick={() => {
           navigator.clipboard
-            .writeText(nametagUrl)
+            .writeText(
+              `<iframe src="${nametagUrl}" width="480px" height="320px" style="border: none;"></iframe>`
+            )
             .then(() => alert("링크가 복사되었습니다."));
         }}
       >

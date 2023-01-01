@@ -34,4 +34,45 @@ function optionText({
   );
 }
 
-export { lookup, parsePart, optionText };
+function copyNametag(uid: string) {
+  // Prepare canvas
+  const cv = document.createElement("canvas");
+  cv.width = 480;
+  cv.height = 320;
+
+  // Get an image
+  const img = document.querySelector<HTMLImageElement>("#nametag");
+  if (!img) {
+    alert("알 수 없는 오류가 발생하였습니다.");
+    return;
+  }
+
+  img.crossOrigin = "anonymous";
+  img.src = `https://api.tof.news/nametag/${uid}`;
+
+  const ctx = cv.getContext("2d");
+  if (!ctx) {
+    alert("알 수 없는 오류가 발생하였습니다.");
+    return;
+  }
+  ctx.imageSmoothingQuality = "high";
+  // ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(img, 0, 0, 480, 320);
+
+  cv.toBlob(
+    (bl) => {
+      if (!bl) {
+        alert("알 수 없는 오류가 발생하였습니다.");
+        return;
+      }
+
+      navigator.clipboard.write([new ClipboardItem({ "image/png": bl })]);
+
+      alert("유저 프로필을 복사하였습니다.");
+    },
+    "image/png",
+    1
+  );
+}
+
+export { lookup, parsePart, optionText, copyNametag };

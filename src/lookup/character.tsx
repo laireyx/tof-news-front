@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { EquipmentStat, LookupResponse, WeaponStat } from "./types";
-import { optionText, parsePart } from "./utils";
+import { copyNametag, optionText, parsePart } from "./utils";
 
 const CategoryTitle = styled.h1``;
 
@@ -101,8 +101,7 @@ function EquipmentGallery({ equipments }: { equipments?: EquipmentStat[] }) {
   );
 }
 
-const Nametag = styled.iframe`
-  border: none;
+const Nametag = styled.img`
   width: 480px;
   height: 320px;
 `;
@@ -110,6 +109,9 @@ const Nametag = styled.iframe`
 const CopyButton = styled.button`
   border: none;
   background: inherit;
+
+  display: inline;
+  width: fit-content;
 
   text-align: left;
   cursor: pointer;
@@ -120,16 +122,8 @@ function CharacterSheet({ resp }: { resp: LookupResponse }) {
   return (
     <CharacterSheetDiv>
       <CategoryTitle>플레이어 정보</CategoryTitle>
-      <Nametag src={nametagUrl} />
-      <CopyButton
-        onClick={() => {
-          navigator.clipboard
-            .writeText(
-              `<iframe src="${nametagUrl}" width="480px" height="320px" style="border: none;"></iframe>`
-            )
-            .then(() => alert("링크가 복사되었습니다."));
-        }}
-      >
+      <Nametag id="nametag" src={nametagUrl} crossOrigin="anonymous" />
+      <CopyButton onClick={() => copyNametag(resp.data?.uid ?? "")}>
         [복사하려면 클릭]
       </CopyButton>
       <CategoryTitle>무기</CategoryTitle>

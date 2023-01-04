@@ -144,7 +144,7 @@ function copyNametag(cv: HTMLCanvasElement | null) {
 
   cv.toBlob(
     (bl) => {
-      if (!bl) {
+      if (!bl || !navigator.clipboard) {
         alert("알 수 없는 오류가 발생하였습니다.");
         return;
       }

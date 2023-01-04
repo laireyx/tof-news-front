@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import styled from "styled-components";
 import { EquipmentStat, LookupResponse, WeaponStat } from "./types";
-import { drawNametag, optionText, parsePart } from "./utils";
+import { copyNametag, drawNametag, optionText, parsePart } from "./utils";
 
 const CategoryTitle = styled.h1``;
 
@@ -105,8 +105,8 @@ function EquipmentGallery({ equipments }: { equipments?: EquipmentStat[] }) {
 }
 
 const Nametag = styled.canvas`
-  width: 450px;
-  height: 250px;
+  aspect-ratio: 9 / 5;
+  max-width: min(100%, 450px);
 `;
 
 const NametagButton = styled.button`
@@ -135,9 +135,12 @@ function CharacterSheet({ resp }: { resp: LookupResponse }) {
       <CategoryTitle>플레이어 정보</CategoryTitle>
       <Nametag ref={nametag} width="900" height="500" />
       <div>
-        이미지 변경
         <NametagButton onClick={() => setAvatarIdx((avatarIdx + 104) % 105)}>
           [이전]
+        </NametagButton>
+
+        <NametagButton onClick={() => copyNametag(nametag.current)}>
+          [복사]
         </NametagButton>
         <NametagButton onClick={() => setAvatarIdx((avatarIdx + 1) % 105)}>
           [다음]

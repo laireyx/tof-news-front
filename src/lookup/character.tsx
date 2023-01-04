@@ -1,6 +1,9 @@
+import { useState } from "react";
+import { useRef } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import { EquipmentStat, LookupResponse, WeaponStat } from "./types";
-import { copyNametag, optionText, parsePart } from "./utils";
+import { drawNametag, optionText, parsePart } from "./utils";
 
 const CategoryTitle = styled.h1``;
 
@@ -101,12 +104,12 @@ function EquipmentGallery({ equipments }: { equipments?: EquipmentStat[] }) {
   );
 }
 
-const Nametag = styled.img`
-  width: 480px;
-  height: 320px;
+const Nametag = styled.canvas`
+  width: 450px;
+  height: 250px;
 `;
 
-const CopyButton = styled.button`
+const NametagButton = styled.button`
   border: none;
   background: inherit;
 
@@ -118,14 +121,28 @@ const CopyButton = styled.button`
 `;
 
 function CharacterSheet({ resp }: { resp: LookupResponse }) {
-  const nametagUrl = `https://api.tof.news/nametag/${resp.data?.uid}`;
+  const nametag = useRef<HTMLCanvasElement>(null);
+  const [avatarIdx, setAvatarIdx] = useState(0);
+
+  useEffect(() => {
+    if (nametag.current && resp.data) {
+      drawNametag(nametag.current, resp.data, avatarIdx);
+    }
+  }, [resp, nametag, avatarIdx]);
+
   return (
     <CharacterSheetDiv>
       <CategoryTitle>플레이어 정보</CategoryTitle>
-      <Nametag id="nametag" src={nametagUrl} crossOrigin="anonymous" />
-      <CopyButton onClick={() => copyNametag(resp.data?.uid ?? "")}>
-        [복사하려면 클릭]
-      </CopyButton>
+      <Nametag ref={nametag} width="900" height="500" />
+      <div>
+        이미지 변경
+        <NametagButton onClick={() => setAvatarIdx((avatarIdx + 104) % 105)}>
+          [이전]
+        </NametagButton>
+        <NametagButton onClick={() => setAvatarIdx((avatarIdx + 1) % 105)}>
+          [다음]
+        </NametagButton>
+      </div>
       <CategoryTitle>무기</CategoryTitle>
       <WeaponGallery weapons={resp?.data?.data.weapons} />
       <CategoryTitle>장비</CategoryTitle>

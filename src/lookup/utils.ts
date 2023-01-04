@@ -104,7 +104,7 @@ async function drawNametag(
   await task(async () => {
     ctx.fillStyle = "black";
     ctx.font = "bold 24px NanumSquareRound";
-    ctx.fillText(`${record.guildName}`, 400, 174);
+    ctx.fillText(`${record.guildName ?? "무소속"}`, 400, 174);
   });
 
   await task(async () => {

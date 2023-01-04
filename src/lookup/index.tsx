@@ -78,21 +78,37 @@ const SearchButton = styled.button`
 `;
 
 function Lookup() {
+  const [server, setServer] = useState("102");
   const [option, setOption] = useState("name");
   const [uid, setUid] = useState("");
   const [resp, setResp] = useState<LookupResponse>({});
 
   return (
     <LookupDialogDiv>
-      <Announcement>뱅기스 서버 한정 임시로 제공되는 기능입니다.</Announcement>
+      <Announcement>
+        뱅기스/아스트라 서버 한정 임시로 제공되는 기능입니다.
+      </Announcement>
       <LookupSearchDiv>
+        <LookupOptions
+          value={server}
+          onChange={({ target: { value } }: { target: { value: string } }) =>
+            setServer(value)
+          }
+        >
+          <option value="102" default>
+            뱅기스
+          </option>
+          <option value="101">아스트라</option>
+        </LookupOptions>
         <LookupOptions
           value={option}
           onChange={({ target: { value } }: { target: { value: string } }) =>
             setOption(value)
           }
         >
-          <option value="name">닉네임</option>
+          <option value="name" default>
+            닉네임
+          </option>
           <option value="uid">UID</option>
         </LookupOptions>
         <LookupInput
@@ -104,7 +120,7 @@ function Lookup() {
         />
         <SearchButton
           onClick={() =>
-            lookup(option, uid)
+            lookup(option, uid, server)
               .then(setResp)
               .catch(() => alert("UID 오류 또는 조회 오류가 발생했습니다."))
           }

@@ -6,12 +6,12 @@ import {
 } from "./types";
 import avatars from "./avatars";
 
-async function lookup(option: string, uid: string) {
+async function lookup(option: string, uid: string, server: string) {
   if (option === "uid" && uid.length !== 17) return Promise.reject();
 
-  return (await fetch(`https://api.tof.news/lookup/${option}/${uid}`).then(
-    (resp) => resp.json()
-  )) as LookupResponse;
+  return (await fetch(
+    `https://api.tof.news/lookup/${option}/${uid}?server=${server}`
+  ).then((resp) => resp.json())) as LookupResponse;
 }
 
 function parsePart(part: string) {

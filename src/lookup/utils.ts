@@ -104,14 +104,20 @@ async function drawNametag(
   await task(async () => {
     ctx.fillStyle = "black";
     ctx.font = "bold 24px NanumSquareRound";
-    ctx.fillText(`${record.guildName ?? "무소속"}`, 400, 174);
+    ctx.fillText(
+      `${record.server === "101" ? "아스트라" : "뱅기스"} ${
+        record.guildName ?? "무소속"
+      }`,
+      400,
+      174
+    );
   });
 
   await task(async () => {
     ctx.fillStyle = "black";
     ctx.font = "800 24px Roboto Slab";
     ctx.fillText(
-      `Lvl. ${record.level} | GS ${record.battleStrength}`,
+      `Lvl. ${record.level} | GS ${record.battleStrength} `,
       400,
       232
     );

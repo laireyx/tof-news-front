@@ -117,7 +117,7 @@ async function drawNametag(
     ctx.fillStyle = "black";
     ctx.font = "800 24px Roboto Slab";
     ctx.fillText(
-      `Lvl. ${record.level} | GS ${record.battleStrength} `,
+      `Lvl. ${record.level} | GS ${record.battleStrength}`,
       400,
       232
     );

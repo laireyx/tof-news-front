@@ -1,3 +1,26 @@
+type PlayerStat = Partial<{
+  maxHp: number;
+  crit: number;
+
+  phyAtkBase: number;
+  fireAtkBase: number;
+  iceAtkBase: number;
+  thunderAtkBase: number;
+  superpowerAtkBase: number;
+
+  phyAtk: number;
+  fireAtk: number;
+  iceAtk: number;
+  thunderAtk: number;
+  superpowerAtk: number;
+
+  phyDef: number;
+  fireDef: number;
+  iceDef: number;
+  thunderDef: number;
+  superpowerDef: number;
+}>;
+
 type WeaponStat = {
   name: string;
   stars: number;
@@ -32,7 +55,7 @@ type EquipmentStat = {
 type LookupRecord = {
   uid: string;
   name: string;
-  server: string;
+  server: "101" | "102";
 
   guildName?: string;
   inGameUid: string;
@@ -41,6 +64,7 @@ type LookupRecord = {
 
   timestamp: number;
   data: {
+    player: PlayerStat;
     weapons: WeaponStat[];
     equipments: EquipmentStat[];
   };
@@ -59,6 +83,7 @@ export type {
   EquipmentOptionElement,
   EquipmentOptionValue,
   EquipmentOptionAdjust,
+  PlayerStat,
   WeaponStat,
   EquipmentStat,
 };

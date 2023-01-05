@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
 import styled from "styled-components";
-import { EquipmentStat, LookupResponse, WeaponStat } from "./types";
+import { EquipmentStat, LookupResponse, PlayerStat, WeaponStat } from "./types";
 import { copyNametag, drawNametag, optionText, parsePart } from "./utils";
 
 const CategoryTitle = styled.h1``;
@@ -11,6 +11,70 @@ const CharacterSheetDiv = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+const PlayerSheetDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+`;
+const PlayerSheetItem = styled.span``;
+const OptionIcon = styled.img`
+  width: 24px;
+  height: 24px;
+`;
+
+function PlayerSheet({ player }: { player?: PlayerStat }) {
+  const intStats: Required<PlayerStat> = Object.fromEntries(
+    Object.entries(player ?? {}).map(([k, v]) => [k, ~~v])
+  ) as Required<PlayerStat>;
+
+  return (
+    <PlayerSheetDiv>
+      <PlayerSheetItem>
+        <OptionIcon src={`/img/equip/value/MaxHealth.webp`} /> {intStats.maxHp}
+      </PlayerSheetItem>
+      <PlayerSheetItem>
+        <OptionIcon src={`/img/equip/value/Crit.webp`} /> {intStats.crit}
+      </PlayerSheetItem>
+
+      <PlayerSheetItem>
+        <OptionIcon src={`/img/equip/element/Phy.webp`} />
+        <OptionIcon src={`/img/equip/value/Atk.webp`} />
+        {intStats.phyAtk}
+        <OptionIcon src={`/img/equip/value/Def.webp`} />
+        {intStats.phyDef}
+      </PlayerSheetItem>
+      <PlayerSheetItem>
+        <OptionIcon src={`/img/equip/element/Fire.webp`} />
+        <OptionIcon src={`/img/equip/value/Atk.webp`} />
+        {intStats.fireAtk}
+        <OptionIcon src={`/img/equip/value/Def.webp`} />
+        {intStats.fireDef}
+      </PlayerSheetItem>
+      <PlayerSheetItem>
+        <OptionIcon src={`/img/equip/element/Ice.webp`} />
+        <OptionIcon src={`/img/equip/value/Atk.webp`} />
+        {intStats.iceAtk}
+        <OptionIcon src={`/img/equip/value/Def.webp`} />
+        {intStats.iceDef}
+      </PlayerSheetItem>
+      <PlayerSheetItem>
+        <OptionIcon src={`/img/equip/element/Thunder.webp`} />
+        <OptionIcon src={`/img/equip/value/Atk.webp`} />
+        {intStats.phyAtk}
+        <OptionIcon src={`/img/equip/value/Def.webp`} />
+        {intStats.phyDef}
+      </PlayerSheetItem>
+      <PlayerSheetItem>
+        <OptionIcon src={`/img/equip/element/Superpower.webp`} />
+        <OptionIcon src={`/img/equip/value/Atk.webp`} />
+        {intStats.superpowerAtk}
+        <OptionIcon src={`/img/equip/value/Def.webp`} />
+        {intStats.superpowerDef}
+      </PlayerSheetItem>
+    </PlayerSheetDiv>
+  );
+}
 
 const MountIconDiv = styled.div`
   display: flex;
@@ -66,10 +130,6 @@ const EquipmentFrame = styled.div``;
 const EquipmentOptionInfo = styled.div`
   display: flex;
   flex-direction: column;
-`;
-const OptionIcon = styled.img`
-  width: 24px;
-  height: 24px;
 `;
 
 const OptionValue = styled.span``;
@@ -146,6 +206,8 @@ function CharacterSheet({ resp }: { resp: LookupResponse }) {
           [다음]
         </NametagButton>
       </div>
+      <CategoryTitle>능력치</CategoryTitle>
+      <PlayerSheet player={resp?.data?.data.player} />
       <CategoryTitle>무기</CategoryTitle>
       <WeaponGallery weapons={resp?.data?.data.weapons} />
       <CategoryTitle>장비</CategoryTitle>

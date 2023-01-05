@@ -61,9 +61,9 @@ function PlayerSheet({ player }: { player?: PlayerStat }) {
       <PlayerSheetItem>
         <OptionIcon src={`/img/equip/element/Thunder.webp`} />
         <OptionIcon src={`/img/equip/value/Atk.webp`} />
-        {intStats.phyAtk}
+        {intStats.thunderAtk}
         <OptionIcon src={`/img/equip/value/Def.webp`} />
-        {intStats.phyDef}
+        {intStats.thunderDef}
       </PlayerSheetItem>
       <PlayerSheetItem>
         <OptionIcon src={`/img/equip/element/Superpower.webp`} />

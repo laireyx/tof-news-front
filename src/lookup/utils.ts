@@ -6,12 +6,40 @@ import {
 } from "./types";
 import avatars from "./avatars";
 
-async function lookup(option: string, uid: string, server: string) {
-  if (option === "uid" && uid.length !== 17) return Promise.reject();
+function lookupByName(name: string, server: string) {
+  return fetch(
+    `https://api.tof.news/lookup/name/${name}?server=${server}`
+  ).then((resp) => resp.json()) as Promise<LookupResponse>;
+}
 
-  return (await fetch(
-    `https://api.tof.news/lookup/${option}/${uid}?server=${server}`
-  ).then((resp) => resp.json())) as LookupResponse;
+function lookupByUid(uid: string, server: string) {
+  let canonicalUid = uid;
+
+  const isCanoincalUid = uid.match(/4294\d{13}/);
+  if (!isCanoincalUid) {
+    // 999910x style UID
+    const isScreenUid = uid.match(/999910([12])(\d+)/);
+    if (!isScreenUid) return Promise.reject();
+    const [, server, index] = isScreenUid;
+    console.log(server, index);
+    canonicalUid = (
+      (server === "1" ? 42945811784400896n : 42945816079368192n) + BigInt(index)
+    ).toString();
+  }
+
+  if (canonicalUid.length !== 17) return Promise.reject();
+
+  return fetch(
+    `https://api.tof.news/lookup/uid/${canonicalUid}?server=${server}`
+  ).then((resp) => resp.json()) as Promise<LookupResponse>;
+}
+
+function lookup(option: string, str: string, server: string) {
+  if (option === "name") {
+    return lookupByName(str, server);
+  } else if (option === "uid") {
+    return lookupByUid(str, server);
+  } else return Promise.reject();
 }
 
 function parsePart(part: string) {
@@ -142,7 +170,7 @@ async function drawNametag(
   });
 }
 
-function copyNametag(cv: HTMLCanvasElement | null) {
+function copyNametag(cv: HTMLCanvasElement | null, name: string) {
   if (!cv) {
     alert("알 수 없는 오류가 발생하였습니다.");
     return;
@@ -155,9 +183,17 @@ function copyNametag(cv: HTMLCanvasElement | null) {
         return;
       }
 
-      navigator.clipboard.write([new ClipboardItem({ "image/png": bl })]);
+      const url = URL.createObjectURL(bl);
 
-      alert("유저 프로필을 복사하였습니다.");
+      const anchorElement = document.createElement("a");
+      anchorElement.setAttribute("href", url);
+      anchorElement.setAttribute("download", `${name}.png`);
+      anchorElement.click();
+
+      anchorElement.addEventListener("click", () => {
+        URL.revokeObjectURL(url);
+        anchorElement.remove();
+      });
     },
     "image/png",
     1

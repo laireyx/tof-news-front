@@ -199,8 +199,12 @@ function CharacterSheet({ resp }: { resp: LookupResponse }) {
           [이전]
         </NametagButton>
 
-        <NametagButton onClick={() => copyNametag(nametag.current)}>
-          [복사]
+        <NametagButton
+          onClick={() =>
+            copyNametag(nametag.current, resp?.data?.name ?? "Error")
+          }
+        >
+          [다운로드]
         </NametagButton>
         <NametagButton onClick={() => setAvatarIdx((avatarIdx + 1) % 105)}>
           [다음]

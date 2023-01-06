@@ -21,9 +21,9 @@ function lookupByUid(uid: string, server: string) {
     const isScreenUid = uid.match(/999910([12])(\d+)/);
     if (!isScreenUid) return Promise.reject();
     const [, server, index] = isScreenUid;
-    console.log(server, index);
     canonicalUid = (
-      (server === "1" ? 42945811784400896n : 42945816079368192n) + BigInt(index)
+      BigInt(server === "1" ? "42945811784400896" : "42945816079368192") +
+      BigInt(index)
     ).toString();
   }
 

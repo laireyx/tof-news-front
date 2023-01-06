@@ -18,11 +18,11 @@ function lookupByUid(uid: string, server: string) {
   const isCanoincalUid = uid.match(/4294\d{13}/);
   if (!isCanoincalUid) {
     // 999910x style UID
-    const isScreenUid = uid.match(/999910([12])(\d+)/);
+    const isScreenUid = uid.match(/(999910[12])(\d+)/);
     if (!isScreenUid) return Promise.reject();
     const [, server, index] = isScreenUid;
     canonicalUid = (
-      BigInt(server === "1" ? "42945811784400896" : "42945816079368192") +
+      BigInt(server) * BigInt("4294967296") +
       BigInt(index)
     ).toString();
   }

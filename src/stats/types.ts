@@ -8,11 +8,11 @@ const PlayerStatName = {
   thunderAtk: "번개 공격력",
   superpowerAtk: "이능 공격력",
 
-  phyDef: "물리 저항",
-  fireDef: "화염 저항",
-  iceDef: "얼음 저항",
-  thunderDef: "번개 저항",
-  superpowerDef: "이능 저항",
+  phyDef: "물리 내성",
+  fireDef: "화염 내성",
+  iceDef: "얼음 내성",
+  thunderDef: "번개 내성",
+  superpowerDef: "이능 내성",
 } as const;
 
 type PlayerStatKeys = keyof typeof PlayerStatName;

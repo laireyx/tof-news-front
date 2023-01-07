@@ -18,9 +18,14 @@ function useNews({ source, page }: { source?: string; page: number }) {
     const controller = new AbortController();
 
     setPullable(false);
-    fetch(`https://api.tof.news/news/list?p=${page}&source=${source}`, {
-      signal: controller.signal,
-    })
+    fetch(
+      `${
+        import.meta.env.VITE_API_ENDPOINT
+      }/news/list?p=${page}&source=${source}`,
+      {
+        signal: controller.signal,
+      }
+    )
       .then((resp) => resp.json())
       .then((json) => {
         setNewsList((currentList) => currentList.concat(json as News[]));

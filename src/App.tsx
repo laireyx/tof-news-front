@@ -111,7 +111,7 @@ function App() {
           <Route path="/" element={<TofNews />} />
           <Route path="/daily" element={<DailyRoutine />} />
           <Route path="/lookup" element={<Lookup />} />
-          <Route path="/stats" element={<Stats />} />
+          <Route path="/stats/*" element={<Stats />} />
         </Routes>
       </HashRouter>
       <FooterDiv>&nbsp;</FooterDiv>

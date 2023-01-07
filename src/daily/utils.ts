@@ -86,7 +86,6 @@ function useRoutine() {
   }, []);
 
   useEffect(() => {
-    console.log("localforage setitem");
     localforage.setItem("tof:routine-state", routineState);
   }, [routineState]);
 

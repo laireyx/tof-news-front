@@ -8,7 +8,7 @@ import avatars from "./avatars";
 
 function lookupByName(name: string, server: string) {
   return fetch(
-    `https://api.tof.news/lookup/name/${name}?server=${server}`
+    `${import.meta.env.VITE_API_ENDPOINT}/lookup/name/${name}?server=${server}`
   ).then((resp) => resp.json()) as Promise<LookupResponse>;
 }
 
@@ -30,7 +30,9 @@ function lookupByUid(uid: string, server: string) {
   if (canonicalUid.length !== 17) return Promise.reject();
 
   return fetch(
-    `https://api.tof.news/lookup/uid/${canonicalUid}?server=${server}`
+    `${
+      import.meta.env.VITE_API_ENDPOINT
+    }/lookup/uid/${canonicalUid}?server=${server}`
   ).then((resp) => resp.json()) as Promise<LookupResponse>;
 }
 

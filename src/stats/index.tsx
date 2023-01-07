@@ -1,5 +1,7 @@
+import { Link, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
-import { useStats } from "./utils";
+import PlayerStats from "./player";
+import WeaponStats from "./weapons";
 
 const StatsDiv = styled.div`
   flex-grow: 1;
@@ -15,29 +17,23 @@ const StatsDiv = styled.div`
   padding: 12px;
 `;
 
-const WeaponImage = styled.img`
-  width: 128px;
-  height: 128px;
-  mix-blend-mode: multiply;
-`;
+function StatsNavigation() {
+  return (
+    <>
+      <Link to="weapons">무기 통계</Link>
+      <Link to="player">플레이어 통계</Link>
+    </>
+  );
+}
 
 function Stats() {
-  const stats = useStats();
-
   return (
     <StatsDiv>
-      Under construction
-      {stats.slice(0, 10).map(([weaponNames, count], idx) => {
-        const weapons = weaponNames.map((name) => (
-          <WeaponImage src={`/img/weapon/${name}.webp`} />
-        ));
-
-        return (
-          <div key={idx}>
-            {weapons} : {count}
-          </div>
-        );
-      })}
+      <Routes>
+        <Route path="/" element={<StatsNavigation />} />
+        <Route path="/weapons" element={<WeaponStats />} />
+        <Route path="/player" element={<PlayerStats />} />
+      </Routes>
     </StatsDiv>
   );
 }

@@ -67,7 +67,7 @@ function useWeaponStats() {
         const mainResults: WeaponStatsResult = [];
         let etcCount = 0;
         result.forEach(([combination, count]) => {
-          if (count >= 5)
+          if (count >= 50)
             mainResults.push({ name: weaponNameString(combination), y: count });
           else etcCount += count;
         });

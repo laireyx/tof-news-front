@@ -71,7 +71,7 @@ function PlayerStats() {
           },
           tooltip: {
             headerFormat: "<b>{point.key:.0f}%</b><br>",
-            pointFormat: "{point.y}",
+            pointFormat: "{point.y:.0f}",
           },
           yAxis: {
             labels: {

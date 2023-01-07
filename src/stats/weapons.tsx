@@ -4,8 +4,14 @@ import styled from "styled-components";
 import { useWeaponStats } from "./utils";
 
 const WeaponStatsDiv = styled.div`
+  width: 100%;
+
   display: flex;
   flex-direction: column;
+`;
+
+const WeaponStatsTitle = styled.h1`
+  text-align: center;
 `;
 
 function WeaponStats() {
@@ -13,6 +19,7 @@ function WeaponStats() {
 
   return (
     <WeaponStatsDiv>
+      <WeaponStatsTitle>무기 조합 통계</WeaponStatsTitle>
       <HighchartsReact
         highcharts={Highcharts}
         options={{
@@ -21,6 +28,13 @@ function WeaponStats() {
             plotBorderWidth: null,
             plotShadow: false,
             type: "pie",
+
+            width: 600,
+            style: {
+              margin: "auto",
+              "max-width": "100%",
+              fontFamily: "NanumSquareRound, sans-serif",
+            },
           },
           title: { text: "무기 조합 통계" },
           plotOptions: {

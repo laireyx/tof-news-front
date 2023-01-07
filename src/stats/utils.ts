@@ -50,7 +50,7 @@ function useWeaponStats() {
   const [result, setResult] = useState<WeaponStatsResult>([]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_ENDPOINT}/stats/weapons`)
+    fetch(`${import.meta.env.VITE_API_ENDPOINT}/stats/weapon`)
       .then((resp) => resp.json())
       .then((json) => json as WeaponStatsResponse)
       .then((rawResult) =>

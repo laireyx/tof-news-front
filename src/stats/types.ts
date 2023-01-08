@@ -2,11 +2,11 @@ const PlayerStatName = {
   maxHp: "최대 HP",
   crit: "치명",
 
-  phyAtk: "물리 공격력",
-  fireAtk: "화염 공격력",
-  iceAtk: "얼음 공격력",
-  thunderAtk: "번개 공격력",
-  superpowerAtk: "이능 공격력",
+  phyAtkBase: "물리 공격력",
+  fireAtkBase: "화염 공격력",
+  iceAtkBase: "얼음 공격력",
+  thunderAtkBase: "번개 공격력",
+  superpowerAtkBase: "이능 공격력",
 
   phyDef: "물리 내성",
   fireDef: "화염 내성",

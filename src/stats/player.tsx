@@ -48,9 +48,15 @@ function PlayerStats() {
           target: { value: PlayerStatKeys };
         }) => setStatName(value)}
       >
-        {Object.keys(PlayerStatName).map((key) => (
-          <option value={key}>{PlayerStatName[key as PlayerStatKeys]}</option>
-        ))}
+        {Object.keys(PlayerStatName)
+          .filter(
+            (key) => !key.endsWith("AtkBase") && !key.endsWith("AtkDefault")
+          )
+          .map((key) => (
+            <option value={key}>
+              {PlayerStatName[key as PlayerStatKeys].replace(/\([^)]+\)$/, "")}
+            </option>
+          ))}
       </PlayerStatOptions>
       <HighchartsReact
         highcharts={Highcharts}
@@ -67,7 +73,7 @@ function PlayerStats() {
             },
           },
           title: {
-            text: `${PlayerStatName[statName]} 통계`,
+            text: `${PlayerStatName[statName].replace(/\([^)]+\)$/, "")} 통계`,
           },
           tooltip: {
             headerFormat: "<b>{point.key:.0f}%</b><br>",
@@ -86,7 +92,7 @@ function PlayerStats() {
               fillOpacity: 0.5,
             },
           },
-          series: [stats],
+          series: stats,
         }}
       />
     </PlayerStatsDiv>

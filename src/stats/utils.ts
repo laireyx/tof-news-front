@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import {
   PlayerStatKeys,
+  PlayerStatName,
   PlayerStatsResponse,
   PlayerStatsResult,
   WeaponStatsResponse,
@@ -81,20 +82,34 @@ function useWeaponStats() {
 }
 
 function usePlayerStats(statName: PlayerStatKeys) {
-  const [result, setResult] = useState<PlayerStatsResult>({
-    name: "백분율",
-    data: [],
-  });
+  const [result, setResult] = useState<PlayerStatsResult[]>([
+    {
+      name: "치명",
+      data: [],
+    },
+  ]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_ENDPOINT}/stats/player?stat=${statName}`)
-      .then((resp) => resp.json())
-      .then((json) => json as PlayerStatsResponse)
-      .then((result) => ({
-        name: "백분율",
-        data: result.map(([, value]) => value),
-      }))
-      .then(setResult);
+    const fetchTargets: string[] = [statName];
+    if (statName.endsWith("Atk") && !statName.startsWith("superpower")) {
+      fetchTargets.push(`${statName}Base`, `${statName}Default`);
+    }
+
+    console.log(fetchTargets);
+
+    Promise.all(
+      fetchTargets.map((target) =>
+        fetch(
+          `${import.meta.env.VITE_API_ENDPOINT}/stats/player?stat=${target}`
+        )
+          .then((resp) => resp.json())
+          .then((json) => json as PlayerStatsResponse)
+          .then((result) => ({
+            name: `${PlayerStatName[target as PlayerStatKeys]}`,
+            data: result.map(([, value]) => value),
+          }))
+      )
+    ).then(setResult);
   }, [statName]);
 
   return result;

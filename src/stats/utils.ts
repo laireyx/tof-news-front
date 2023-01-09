@@ -95,8 +95,6 @@ function usePlayerStats(statName: PlayerStatKeys) {
       fetchTargets.push(`${statName}Base`, `${statName}Default`);
     }
 
-    console.log(fetchTargets);
-
     Promise.all(
       fetchTargets.map((target) =>
         fetch(

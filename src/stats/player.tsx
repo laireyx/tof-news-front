@@ -33,6 +33,10 @@ const PlayerStatOptions = styled.select`
   font-size: 1.25em;
 `;
 
+const PlayerStatsExpl = styled.span`
+  text-align: center;
+`;
+
 function PlayerStats() {
   const [statName, setStatName] = useState<PlayerStatKeys>("crit");
   const stats = usePlayerStats(statName);
@@ -71,6 +75,10 @@ function PlayerStats() {
               "max-width": "100%",
               fontFamily: "NanumSquareRound, sans-serif",
             },
+
+            zooming: {
+              type: "xy",
+            },
           },
           title: {
             text: `${PlayerStatName[statName].replace(/\([^)]+\)$/, "")} 통계`,
@@ -95,6 +103,9 @@ function PlayerStats() {
           series: stats,
         }}
       />
+      <PlayerStatsExpl>
+        드래그를 이용하여 원하는 영역을 확대할 수 있습니다.
+      </PlayerStatsExpl>
     </PlayerStatsDiv>
   );
 }

@@ -8,7 +8,9 @@ import avatars from "./avatars";
 
 function lookupByName(name: string, server: string) {
   return fetch(
-    `${import.meta.env.VITE_API_ENDPOINT}/lookup/name/${name}?server=${server}`
+    `${import.meta.env.VITE_API_ENDPOINT}/lookup/name/${encodeURIComponent(
+      name
+    )}?server=${server}`
   ).then((resp) => resp.json()) as Promise<LookupResponse>;
 }
 
@@ -18,7 +20,7 @@ function lookupByUid(uid: string, server: string) {
   const isCanoincalUid = uid.match(/4294\d{13}/);
   if (!isCanoincalUid) {
     // 999910x style UID
-    const isScreenUid = uid.match(/(999910[12])(\d+)/);
+    const isScreenUid = uid.match(/(999910[\d])(\d+)/);
     if (!isScreenUid) return Promise.reject();
     const [, server, index] = isScreenUid;
     canonicalUid = (

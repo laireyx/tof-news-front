@@ -5,6 +5,7 @@ import {
   LookupResponse,
 } from "./types";
 import avatars from "./avatars";
+import Servers from "./servers.json";
 
 function lookupByName(name: string, server: string) {
   return fetch(
@@ -134,12 +135,12 @@ async function drawNametag(
   });
 
   await task(async () => {
+    const server = record.inGameUid.slice(0, 7) as keyof typeof Servers;
+
     ctx.fillStyle = "black";
     ctx.font = "bold 24px NanumSquareRound";
     ctx.fillText(
-      `${record.server === "101" ? "아스트라" : "뱅기스"} ${
-        record.guildName ?? "무소속"
-      }`,
+      `${Servers[server]} ${record.guildName ?? "무소속"}`,
       400,
       174
     );

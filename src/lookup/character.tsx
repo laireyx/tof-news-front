@@ -111,7 +111,7 @@ function WeaponGallery({ weapons }: { weapons?: WeaponStat[] }) {
       {weapons?.map(({ name, stars, level }) => (
         <WeaponFrameDiv>
           <MountIcon
-            src={`/img/weapon/${name}.webp`}
+            src={`/img/weapon/${name}.png`}
             label={`${level}LV / ★${stars}`}
           />
         </WeaponFrameDiv>

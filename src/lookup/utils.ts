@@ -169,7 +169,7 @@ async function drawNametag(
   await task(async () => {
     await Promise.all(
       record.data.weapons.map(async ({ name }, i) =>
-        drawImg(`/img/weapon/${name}.webp`, 400 + i * 72, 280, 64, 64)
+        drawImg(`/img/weapon/${name}.png`, 400 + i * 72, 280, 64, 64)
       )
     );
   });

@@ -29,6 +29,7 @@ function weaponNameString(weaponNames: string[]) {
     gun_fire: "코발트",
     hammer_ice: "이네",
     ShieldAxe_Fire: "휴마",
+    Snipe_fire: "애나벨라",
     sickle_fire: "킹",
     spear_ice: "얼음장창",
     spear_thunder: "시리우스",

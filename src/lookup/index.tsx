@@ -85,9 +85,6 @@ function Lookup() {
 
   return (
     <LookupDialogDiv>
-      <Announcement>
-        뱅기스/아스트라 서버 한정 임시로 제공되는 기능입니다.
-      </Announcement>
       <LookupSearchDiv>
         <LookupOptions
           value={server}

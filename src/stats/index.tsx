@@ -1,5 +1,6 @@
 import { Link, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
+import EquipStats from "./equip";
 import PlayerStats from "./player";
 import WeaponStats from "./weapons";
 
@@ -22,6 +23,7 @@ function StatsNavigation() {
     <>
       <Link to="weapons">무기 통계</Link>
       <Link to="player">플레이어 통계</Link>
+      <Link to="equip">장비 통계</Link>
     </>
   );
 }
@@ -33,6 +35,7 @@ function Stats() {
         <Route path="/" element={<StatsNavigation />} />
         <Route path="/weapons" element={<WeaponStats />} />
         <Route path="/player" element={<PlayerStats />} />
+        <Route path="/equip" element={<EquipStats />} />
       </Routes>
     </StatsDiv>
   );

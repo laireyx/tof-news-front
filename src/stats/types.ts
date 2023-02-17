@@ -31,8 +31,11 @@ type PlayerStatKeys = keyof typeof PlayerStatName;
 type WeaponStatsResponse = [string, number][];
 type WeaponStatsResult = { name: string; y: number }[];
 
-type PlayerStatsResponse = [number, number][];
+type PlayerStatsResponse = number[];
 type PlayerStatsResult = { name: string; data: number[] };
+
+type EquipStatsResponse = number[];
+type EquipStatsResult = { name: string; data: number[] };
 
 export { PlayerStatName };
 export type {
@@ -41,4 +44,6 @@ export type {
   PlayerStatsResponse,
   PlayerStatsResult,
   PlayerStatKeys,
+  EquipStatsResponse,
+  EquipStatsResult,
 };

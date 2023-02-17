@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import {
+  EquipStatsResponse,
+  EquipStatsResult,
   PlayerStatKeys,
   PlayerStatName,
   PlayerStatsResponse,
@@ -106,7 +108,7 @@ function usePlayerStats(statName: PlayerStatKeys) {
           .then((json) => json as PlayerStatsResponse)
           .then((result) => ({
             name: `${PlayerStatName[target as PlayerStatKeys]}`,
-            data: result.map(([, value]) => value),
+            data: result,
           }))
       )
     ).then(setResult);
@@ -115,4 +117,24 @@ function usePlayerStats(statName: PlayerStatKeys) {
   return result;
 }
 
-export { useWeaponStats, usePlayerStats };
+function useEquipmentStats() {
+  const [result, setResult] = useState<EquipStatsResult>({
+    name: "공격력",
+    data: [],
+  });
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_ENDPOINT}/stats/equip`)
+      .then((resp) => resp.json())
+      .then((json) => json as PlayerStatsResponse)
+      .then((result) => ({
+        name: `공격력`,
+        data: result,
+      }))
+      .then(setResult);
+  }, []);
+
+  return result;
+}
+
+export { useWeaponStats, usePlayerStats, useEquipmentStats };

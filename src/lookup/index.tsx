@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import CharacterSheet from "./character";
 import { LookupResponse } from "./types";
@@ -80,7 +81,7 @@ const SearchButton = styled.button`
 function Lookup() {
   const [server, setServer] = useState("102");
   const [option, setOption] = useState("name");
-  const [uid, setUid] = useState("");
+  const [uid, setUid] = useState(useParams().uid ?? "");
   const [resp, setResp] = useState<LookupResponse>({});
 
   return (

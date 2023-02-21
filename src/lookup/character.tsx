@@ -12,12 +12,11 @@ const CharacterSheetDiv = styled.div`
   flex-direction: column;
 `;
 
-const PlayerSheetDiv = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+const PlayerSheetTable = styled.table`
+  align-self: flex-start;
 `;
-const PlayerSheetItem = styled.span``;
+const PlayerSheetItem = styled.tr``;
+const PlayerSheetItemSep = styled.td``;
 const OptionIcon = styled.img`
   width: 24px;
   height: 24px;
@@ -29,50 +28,80 @@ function PlayerSheet({ player }: { player?: PlayerStat }) {
   ) as Required<PlayerStat>;
 
   return (
-    <PlayerSheetDiv>
+    <PlayerSheetTable>
       <PlayerSheetItem>
-        <OptionIcon src={`/img/equip/value/MaxHealth.webp`} /> {intStats.maxHp}
+        <PlayerSheetItemSep>
+          <OptionIcon src={`/img/equip/value/MaxHealth.webp`} />{" "}
+          {intStats.maxHp}
+        </PlayerSheetItemSep>
       </PlayerSheetItem>
       <PlayerSheetItem>
-        <OptionIcon src={`/img/equip/value/Crit.webp`} /> {intStats.crit}
+        <PlayerSheetItemSep>
+          <OptionIcon src={`/img/equip/value/Crit.webp`} /> {intStats.crit}
+        </PlayerSheetItemSep>
       </PlayerSheetItem>
 
       <PlayerSheetItem>
-        <OptionIcon src={`/img/equip/element/Phy.webp`} />
-        <OptionIcon src={`/img/equip/value/Atk.webp`} />
-        {intStats.phyAtk}
-        <OptionIcon src={`/img/equip/value/Def.webp`} />
-        {intStats.phyDef}
+        <PlayerSheetItemSep>
+          <OptionIcon src={`/img/equip/element/Phy.webp`} />
+          <OptionIcon src={`/img/equip/value/Atk.webp`} />
+          {intStats.phyAtkDefault} / {intStats.phyAtk}({intStats.phyAtkBase}+
+          {intStats.phyAtk - intStats.phyAtkBase})
+        </PlayerSheetItemSep>
+        <PlayerSheetItemSep>
+          <OptionIcon src={`/img/equip/value/Def.webp`} />
+          {intStats.phyDef}
+        </PlayerSheetItemSep>
       </PlayerSheetItem>
       <PlayerSheetItem>
-        <OptionIcon src={`/img/equip/element/Fire.webp`} />
-        <OptionIcon src={`/img/equip/value/Atk.webp`} />
-        {intStats.fireAtk}
-        <OptionIcon src={`/img/equip/value/Def.webp`} />
-        {intStats.fireDef}
+        <PlayerSheetItemSep>
+          <OptionIcon src={`/img/equip/element/Fire.webp`} />
+          <OptionIcon src={`/img/equip/value/Atk.webp`} />
+          {intStats.fireAtkDefault} / {intStats.fireAtk}({intStats.fireAtkBase}+
+          {intStats.fireAtk - intStats.fireAtkBase})
+        </PlayerSheetItemSep>
+        <PlayerSheetItemSep>
+          <OptionIcon src={`/img/equip/value/Def.webp`} />
+          {intStats.fireDef}
+        </PlayerSheetItemSep>
       </PlayerSheetItem>
       <PlayerSheetItem>
-        <OptionIcon src={`/img/equip/element/Ice.webp`} />
-        <OptionIcon src={`/img/equip/value/Atk.webp`} />
-        {intStats.iceAtk}
-        <OptionIcon src={`/img/equip/value/Def.webp`} />
-        {intStats.iceDef}
+        <PlayerSheetItemSep>
+          <OptionIcon src={`/img/equip/element/Ice.webp`} />
+          <OptionIcon src={`/img/equip/value/Atk.webp`} />
+          {intStats.iceAtkDefault} / {intStats.iceAtk}({intStats.iceAtkBase}+
+          {intStats.iceAtk - intStats.iceAtkBase})
+        </PlayerSheetItemSep>
+        <PlayerSheetItemSep>
+          <OptionIcon src={`/img/equip/value/Def.webp`} />
+          {intStats.iceDef}
+        </PlayerSheetItemSep>
       </PlayerSheetItem>
       <PlayerSheetItem>
-        <OptionIcon src={`/img/equip/element/Thunder.webp`} />
-        <OptionIcon src={`/img/equip/value/Atk.webp`} />
-        {intStats.thunderAtk}
-        <OptionIcon src={`/img/equip/value/Def.webp`} />
-        {intStats.thunderDef}
+        <PlayerSheetItemSep>
+          <OptionIcon src={`/img/equip/element/Thunder.webp`} />
+          <OptionIcon src={`/img/equip/value/Atk.webp`} />
+          {intStats.thunderAtkDefault} / {intStats.thunderAtk}(
+          {intStats.thunderAtkBase}+
+          {intStats.thunderAtk - intStats.thunderAtkBase})
+        </PlayerSheetItemSep>
+        <PlayerSheetItemSep>
+          <OptionIcon src={`/img/equip/value/Def.webp`} />
+          {intStats.thunderDef}
+        </PlayerSheetItemSep>
       </PlayerSheetItem>
       <PlayerSheetItem>
-        <OptionIcon src={`/img/equip/element/Superpower.webp`} />
-        <OptionIcon src={`/img/equip/value/Atk.webp`} />
-        {intStats.superpowerAtk}
-        <OptionIcon src={`/img/equip/value/Def.webp`} />
-        {intStats.superpowerDef}
+        <PlayerSheetItemSep>
+          <OptionIcon src={`/img/equip/element/Superpower.webp`} />
+          <OptionIcon src={`/img/equip/value/Atk.webp`} />
+          {intStats.superpowerAtk}
+        </PlayerSheetItemSep>
+        <PlayerSheetItemSep>
+          <OptionIcon src={`/img/equip/value/Def.webp`} />
+          {intStats.superpowerDef}
+        </PlayerSheetItemSep>
       </PlayerSheetItem>
-    </PlayerSheetDiv>
+    </PlayerSheetTable>
   );
 }
 
@@ -205,6 +234,16 @@ function CharacterSheet({ resp }: { resp: LookupResponse }) {
           }
         >
           [다운로드]
+        </NametagButton>
+        <NametagButton
+          onClick={() =>
+            navigator.clipboard
+              .writeText(resp?.data?.uid ?? "")
+              .then(() => alert("복사 완료"))
+              .catch(() => alert("복사 실패"))
+          }
+        >
+          [UID 복사]
         </NametagButton>
         <NametagButton onClick={() => setAvatarIdx((avatarIdx + 1) % 105)}>
           [다음]

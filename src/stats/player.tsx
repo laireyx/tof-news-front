@@ -33,6 +33,13 @@ const PlayerStatOptions = styled.select`
   font-size: 1.25em;
 `;
 
+const PlayerChartContainer = styled.div`
+  @media (min-width: 768px) {
+    max-width: 600px;
+    margin: auto;
+  }
+`;
+
 const PlayerStatsExpl = styled.span`
   text-align: center;
 `;
@@ -62,47 +69,49 @@ function PlayerStats() {
             </option>
           ))}
       </PlayerStatOptions>
-      <HighchartsReact
-        highcharts={Highcharts}
-        options={{
-          chart: {
-            type: "area",
-            inverted: false,
+      <PlayerChartContainer>
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={{
+            chart: {
+              type: "area",
+              inverted: false,
 
-            width: 600,
-            style: {
-              margin: "auto",
-              "max-width": "100%",
-              fontFamily: "NanumSquareRound, sans-serif",
-            },
+              style: {
+                fontFamily: "NanumSquareRound, sans-serif",
+              },
 
-            zooming: {
-              type: "xy",
-            },
-          },
-          title: {
-            text: `${PlayerStatName[statName].replace(/\([^)]+\)$/, "")} 통계`,
-          },
-          tooltip: {
-            headerFormat: "<b>{point.key:.0f}%</b><br>",
-            pointFormat: "{point.y:.0f}",
-          },
-          yAxis: {
-            labels: {
-              format: "{text}",
+              zooming: {
+                type: "xy",
+              },
             },
             title: {
-              text: PlayerStatName[statName],
+              text: `${PlayerStatName[statName].replace(
+                /\([^)]+\)$/,
+                ""
+              )} 통계`,
             },
-          },
-          plotOptions: {
-            area: {
-              fillOpacity: 0.5,
+            tooltip: {
+              headerFormat: "<b>{point.key:.0f}%</b><br>",
+              pointFormat: "{point.y:.0f}",
             },
-          },
-          series: stats,
-        }}
-      />
+            yAxis: {
+              labels: {
+                format: "{text}",
+              },
+              title: {
+                text: PlayerStatName[statName],
+              },
+            },
+            plotOptions: {
+              area: {
+                fillOpacity: 0.5,
+              },
+            },
+            series: stats,
+          }}
+        />
+      </PlayerChartContainer>
       <PlayerStatsExpl>
         드래그를 이용하여 원하는 영역을 확대할 수 있습니다.
       </PlayerStatsExpl>

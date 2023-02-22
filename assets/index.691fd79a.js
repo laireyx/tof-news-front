@@ -290,15 +290,20 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   flex-direction: column;
 `,cc=Yt.h1`
   text-align: center;
-`;function uc(){const t=lc();return St(hc,{children:[St(cc,{children:"\uC7A5\uBE44 \uACF5\uACA9\uB825 \uD1B5\uACC4"}),St(an,{highcharts:sn,options:{chart:{type:"area",inverted:!1,width:600,style:{margin:"auto","max-width":"100%",fontFamily:"NanumSquareRound, sans-serif"},zooming:{type:"xy"}},title:{text:"\uC7A5\uBE44 \uACF5\uACA9\uB825 \uD1B5\uACC4"},tooltip:{headerFormat:"<b>{point.key:.0f}%</b><br>",pointFormat:"{point.y:.0f}"},yAxis:{labels:{format:"{text}"},title:{text:"\uC7A5\uBE44 \uACF5\uACA9\uB825"}},plotOptions:{area:{fillOpacity:.5}},series:t}})]})}const dc=Yt.div`
+`,uc=Yt.div`
+  @media (min-width: 768px) {
+    max-width: 600px;
+    margin: auto;
+  }
+`;function dc(){const t=lc();return St(hc,{children:[St(cc,{children:"\uC7A5\uBE44 \uACF5\uACA9\uB825 \uD1B5\uACC4"}),St(uc,{children:St(an,{highcharts:sn,options:{chart:{type:"area",inverted:!1,style:{fontFamily:"NanumSquareRound, sans-serif"},zooming:{type:"xy"}},title:{text:"\uC7A5\uBE44 \uACF5\uACA9\uB825 \uD1B5\uACC4"},tooltip:{headerFormat:"<b>{point.key:.0f}%</b><br>",pointFormat:"{point.y:.0f}"},yAxis:{labels:{format:"{text}"},title:{text:"\uC7A5\uBE44 \uACF5\uACA9\uB825"}},plotOptions:{area:{fillOpacity:.5}},series:t}})})]})}const pc=Yt.div`
   width: 100%;
   display: flex;
   flex-direction: column;
 
   gap: 12px;
-`,pc=Yt.h1`
+`,fc=Yt.h1`
   text-align: center;
-`,fc=Yt.select`
+`,gc=Yt.select`
   border: none;
 
   border-radius: 8px;
@@ -312,16 +317,21 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   font-family: ui-monospace monospace Cascadia Consolas;
   font-weight: bold;
   font-size: 1.25em;
-`,gc=Yt.span`
+`,mc=Yt.div`
+  @media (min-width: 768px) {
+    max-width: 600px;
+    margin: auto;
+  }
+`,yc=Yt.span`
   text-align: center;
-`;function mc(){const[t,i]=Te("crit"),n=ac(t);return St(dc,{children:[St(pc,{children:"\uD50C\uB808\uC774\uC5B4 \uB2A5\uB825\uCE58 \uD1B5\uACC4"}),St(fc,{value:t,onChange:({target:{value:e}})=>i(e),children:Object.keys(bi).filter(e=>!e.endsWith("AtkBase")&&!e.endsWith("AtkDefault")).map(e=>St("option",{value:e,children:bi[e].replace(/\([^)]+\)$/,"")}))}),St(an,{highcharts:sn,options:{chart:{type:"area",inverted:!1,width:600,style:{margin:"auto","max-width":"100%",fontFamily:"NanumSquareRound, sans-serif"},zooming:{type:"xy"}},title:{text:`${bi[t].replace(/\([^)]+\)$/,"")} \uD1B5\uACC4`},tooltip:{headerFormat:"<b>{point.key:.0f}%</b><br>",pointFormat:"{point.y:.0f}"},yAxis:{labels:{format:"{text}"},title:{text:bi[t]}},plotOptions:{area:{fillOpacity:.5}},series:n}}),St(gc,{children:"\uB4DC\uB798\uADF8\uB97C \uC774\uC6A9\uD558\uC5EC \uC6D0\uD558\uB294 \uC601\uC5ED\uC744 \uD655\uB300\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."})]})}const yc=Yt.div`
+`;function vc(){const[t,i]=Te("crit"),n=ac(t);return St(pc,{children:[St(fc,{children:"\uD50C\uB808\uC774\uC5B4 \uB2A5\uB825\uCE58 \uD1B5\uACC4"}),St(gc,{value:t,onChange:({target:{value:e}})=>i(e),children:Object.keys(bi).filter(e=>!e.endsWith("AtkBase")&&!e.endsWith("AtkDefault")).map(e=>St("option",{value:e,children:bi[e].replace(/\([^)]+\)$/,"")}))}),St(mc,{children:St(an,{highcharts:sn,options:{chart:{type:"area",inverted:!1,style:{fontFamily:"NanumSquareRound, sans-serif"},zooming:{type:"xy"}},title:{text:`${bi[t].replace(/\([^)]+\)$/,"")} \uD1B5\uACC4`},tooltip:{headerFormat:"<b>{point.key:.0f}%</b><br>",pointFormat:"{point.y:.0f}"},yAxis:{labels:{format:"{text}"},title:{text:bi[t]}},plotOptions:{area:{fillOpacity:.5}},series:n}})}),St(yc,{children:"\uB4DC\uB798\uADF8\uB97C \uC774\uC6A9\uD558\uC5EC \uC6D0\uD558\uB294 \uC601\uC5ED\uC744 \uD655\uB300\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."})]})}const xc=Yt.div`
   width: 100%;
 
   display: flex;
   flex-direction: column;
-`,vc=Yt.h1`
+`,bc=Yt.h1`
   text-align: center;
-`;function xc(){const t=sc();return St(yc,{children:[St(vc,{children:"\uBB34\uAE30 \uC870\uD569 \uD1B5\uACC4"}),St(an,{highcharts:sn,options:{chart:{plotBackgroundColor:null,plotBorderWidth:null,plotShadow:!1,type:"pie",width:600,style:{margin:"auto","max-width":"100%",fontFamily:"NanumSquareRound, sans-serif"}},title:{text:"\uBB34\uAE30 \uC870\uD569 \uD1B5\uACC4"},plotOptions:{pie:{allowPointSelect:!0,cursor:"pointer",dataLabels:{enabled:!0,format:"<b>{point.name}</b>: {point.percentage:.1f} %"}}},tooltip:{pointFormat:"<b>{point.percentage:.1f}%</b>"},series:[{name:"\uBB34\uAE30 \uC870\uD569",colorByPoint:!0,data:t}]}})]})}const bc=Yt.div`
+`;function wc(){const t=sc();return St(xc,{children:[St(bc,{children:"\uBB34\uAE30 \uC870\uD569 \uD1B5\uACC4"}),St(an,{highcharts:sn,options:{chart:{plotBackgroundColor:null,plotBorderWidth:null,plotShadow:!1,type:"pie",width:600,style:{margin:"auto","max-width":"100%",fontFamily:"NanumSquareRound, sans-serif"}},title:{text:"\uBB34\uAE30 \uC870\uD569 \uD1B5\uACC4"},plotOptions:{pie:{allowPointSelect:!0,cursor:"pointer",dataLabels:{enabled:!0,format:"<b>{point.name}</b>: {point.percentage:.1f} %"}}},tooltip:{pointFormat:"<b>{point.percentage:.1f}%</b>"},series:[{name:"\uBB34\uAE30 \uC870\uD569",colorByPoint:!0,data:t}]}})]})}const Sc=Yt.div`
   flex-grow: 1;
 
   border-radius: 8px;
@@ -333,7 +343,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   align-items: center;
   gap: 12px;
   padding: 12px;
-`;function wc(){return St(Me,{children:[St(ii,{to:"weapons",children:"\uBB34\uAE30 \uD1B5\uACC4"}),St(ii,{to:"player",children:"\uD50C\uB808\uC774\uC5B4 \uD1B5\uACC4"}),St(ii,{to:"equip",children:"\uC7A5\uBE44 \uD1B5\uACC4"})]})}function Sc(){return St(bc,{children:St(cs,{children:[St($e,{path:"/",element:St(wc,{})}),St($e,{path:"/weapons",element:St(xc,{})}),St($e,{path:"/player",element:St(mc,{})}),St($e,{path:"/equip",element:St(uc,{})})]})})}const Cc=Yt.div`
+`;function Cc(){return St(Me,{children:[St(ii,{to:"weapons",children:"\uBB34\uAE30 \uD1B5\uACC4"}),St(ii,{to:"player",children:"\uD50C\uB808\uC774\uC5B4 \uD1B5\uACC4"}),St(ii,{to:"equip",children:"\uC7A5\uBE44 \uD1B5\uACC4"})]})}function _c(){return St(Sc,{children:St(cs,{children:[St($e,{path:"/",element:St(Cc,{})}),St($e,{path:"/weapons",element:St(wc,{})}),St($e,{path:"/player",element:St(vc,{})}),St($e,{path:"/equip",element:St(dc,{})})]})})}const kc=Yt.div`
   padding: 2rem;
 
   flex: 1;
@@ -348,7 +358,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   &::-webkit-scrollbar {
     display: none;
   }
-`,_c=Yt.div`
+`,Tc=Yt.div`
   position: absolute;
 
   left: 0;
@@ -377,10 +387,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     width: 100vw;
     flex-direction: row;
   }
-`,kc=Yt.div`
+`,Ac=Yt.div`
   line-height: 128px;
 `,zi=Yt.img`
   filter: invert();
 
   ${({active:t})=>t&&"filter: invert(14%) sepia(70%) saturate(4870%) hue-rotate(240deg) brightness(58%) contrast(137%) drop-shadow(0px 0px 8px white);"}
-`;function Tc(){const t=Mi();return St(_c,{children:[St(ii,{to:"/",children:St(zi,{active:t.pathname==="/",width:"48",src:yh})}),St(ii,{to:"/daily",children:St(zi,{active:t.pathname==="/daily",width:"48",src:us})}),St(ii,{to:"/lookup",children:St(zi,{active:t.pathname==="/lookup",width:"48",src:vh})}),St(ii,{to:"/stats",children:St(zi,{active:t.pathname==="/stats",width:"48",src:xh})})]})}function Ac(){return St(Cc,{children:[St("h1",{className:"title",children:"Tower of Fantasy News"}),St(gh,{children:[St(Tc,{}),St(cs,{children:[St($e,{path:"/",element:St(gl,{})}),St($e,{path:"/daily",element:St(Ph,{})}),St($e,{path:"/lookup",element:St(nc,{})}),St($e,{path:"/stats/*",element:St(Sc,{})})]})]}),St(kc,{children:"\xA0"})]})}hi(St(Ac,{}),document.getElementById("root"));
+`;function Oc(){const t=Mi();return St(Tc,{children:[St(ii,{to:"/",children:St(zi,{active:t.pathname==="/",width:"48",src:yh})}),St(ii,{to:"/daily",children:St(zi,{active:t.pathname==="/daily",width:"48",src:us})}),St(ii,{to:"/lookup",children:St(zi,{active:t.pathname==="/lookup",width:"48",src:vh})}),St(ii,{to:"/stats",children:St(zi,{active:t.pathname.startsWith("/stats"),width:"48",src:xh})})]})}function Pc(){return St(kc,{children:[St("h1",{className:"title",children:"Tower of Fantasy News"}),St(gh,{children:[St(Oc,{}),St(cs,{children:[St($e,{path:"/",element:St(gl,{})}),St($e,{path:"/daily",element:St(Ph,{})}),St($e,{path:"/lookup",element:St(nc,{})}),St($e,{path:"/stats/*",element:St(_c,{})})]})]}),St(Ac,{children:"\xA0"})]})}hi(St(Pc,{}),document.getElementById("root"));

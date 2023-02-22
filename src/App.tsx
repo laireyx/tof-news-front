@@ -92,7 +92,7 @@ function Navigation() {
       </Link>
       <Link to="/stats">
         <LinkIcon
-          active={loc.pathname === "/stats"}
+          active={loc.pathname.startsWith("/stats")}
           width="48"
           src={statsIcon}
         />

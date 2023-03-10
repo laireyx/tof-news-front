@@ -43,6 +43,7 @@ function weaponNameString(weaponNames: string[]) {
     tianlang_thunder: "시리우스",
     iceblade_ice: "앨리스",
     Whip_physic: "우미",
+    fenrir_thunder: "펜리르",
   };
 
   return weaponNames
